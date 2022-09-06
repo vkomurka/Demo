@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebServer.Controllers;
 
-public class ProductCategoriesController : ControllerBase
+public class ProductCategoriesController : WebApi.ControllerBase
 {
     public ProductCategoriesController(
         Func<GetProductCategoriesAction> getProductCategoriesActionFactory,

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebServer.Controllers;
 
-public class UomsController : ControllerBase
+public class UomsController : WebApi.ControllerBase
 {
     public UomsController(
         Func<GetUomsAction> getUomsActionFactory,
@@ -28,7 +28,7 @@ public class UomsController : ControllerBase
 
 
     [HttpGet]
-    //[Authorize()]
+    [Authorize()]
     public async Task<ActionResult<List<UomDto>>> Get()
     {
         return await GetUomsActionFactory.Invoke().ExecuteAsync(null);
@@ -36,7 +36,7 @@ public class UomsController : ControllerBase
 
     [HttpGet]
     [Route("{id}")]
-    //[Authorize()]
+    [Authorize()]
     public async Task<ActionResult<List<UomDto>>> Get([FromRoute] Guid id)
     {
         return await GetUomsActionFactory.Invoke().ExecuteAsync(id);

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebServer.Controllers;
 
-public class AccountController : ControllerBase
+public class AccountController : WebApi.ControllerBase
 {
     public AccountController(
         Func<RegisterDefaultUsersAction> registerDefaultUsersActionFactory,
