@@ -17,12 +17,8 @@ public class DeleteModel : PageModel
         Uom = uoms.FirstOrDefault();
     }
 
-    private ProductDto Uom2 { get; set; }
-
     public async Task<IActionResult> OnPostAsync()
     {
-        Uom2.Name = "dafadfs";
-
         var uomService = new UomService();
         await uomService.DeleteUom(Uom.Id);
         TempData["success"] = "Uom deleted successfully";

@@ -1,4 +1,5 @@
 using Demo.ClientServices;
+using Demo.Contracts;
 using Demo.Contracts.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -12,7 +13,9 @@ public class IndexModel : PageModel
 
     public async Task OnGetAsync()
     {
-        var uomService = new UomService();
-        Uoms = await uomService.LoadUoms();
+        var client = new DemoClient("https://localhost:7111/api/");
+        Uoms = await client.Uoms.GetUomsAsync();
+        //var uomService = new UomService();
+        //Uoms = await uomService.LoadUoms();
     }
 }
