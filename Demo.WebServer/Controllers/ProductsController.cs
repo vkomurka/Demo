@@ -1,7 +1,5 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.WebServer.Controllers.Products;
-using Demo.WebServer.DAL.TestData;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebServer.Controllers;
@@ -28,7 +26,7 @@ public class ProductsController : WebApi.ControllerBase
 
 
     [HttpGet]
-    [Authorize()]
+    //[Authorize()]
     public async Task<ActionResult<List<ProductDto>>> Get()
     {
         if (!ModelState.IsValid)
@@ -40,7 +38,7 @@ public class ProductsController : WebApi.ControllerBase
 
     [HttpGet]
     [Route("{id}")]
-    [Authorize()]
+    //[Authorize()]
     public async Task<ActionResult<List<ProductDto>>> Get([FromRoute] Guid id)
     {
         if (!ModelState.IsValid)
@@ -51,14 +49,14 @@ public class ProductsController : WebApi.ControllerBase
     }
 
     [HttpPost]
-    [Authorize(Roles = TestDataService.AdminRole)]
+    //[Authorize(Roles = TestDataService.AdminRole)]
     public async Task Post([FromBody] IEnumerable<ProductDto> productDtos)
     {
         await PostProductsActionFactory.Invoke().ExecuteAsync(productDtos);
     }
 
     [HttpPut]
-    [Authorize(Roles = TestDataService.AdminRole)]
+    //[Authorize(Roles = TestDataService.AdminRole)]
     public async Task Put([FromBody] IEnumerable<ProductDto> productDtos)
     {
         await PutProductsActionFactory.Invoke().ExecuteAsync(productDtos);
@@ -66,7 +64,7 @@ public class ProductsController : WebApi.ControllerBase
 
     [HttpDelete]
     [Route("{id}")]
-    [Authorize(Roles = TestDataService.AdminRole)]
+    //[Authorize(Roles = TestDataService.AdminRole)]
     public async Task Delete([FromRoute] Guid id)
     {
         await DeleteProductsActionFactory.Invoke().ExecuteAsync(id);

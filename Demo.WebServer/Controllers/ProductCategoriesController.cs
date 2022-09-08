@@ -27,7 +27,7 @@ public class ProductCategoriesController : WebApi.ControllerBase
     public Func<DeleteProductCategoriesAction> DeleteProductCategoriesActionFactory { get; }
 
     [HttpGet]
-    [Authorize]
+    //[Authorize]
     public async Task<ActionResult<List<ProductCategoryDto>>> Get()
     {
         return await GetProductCategoriesActionFactory.Invoke().ExecuteAsync(null);
@@ -35,21 +35,21 @@ public class ProductCategoriesController : WebApi.ControllerBase
 
     [HttpGet]
     [Route("{id}")]
-    [Authorize]
+    //[Authorize]
     public async Task<ActionResult<List<ProductCategoryDto>>> Get([FromRoute] Guid id)
     {
         return await GetProductCategoriesActionFactory.Invoke().ExecuteAsync(id);
     }
 
     [HttpPost]
-    [Authorize(Roles = TestDataService.AdminRole)]
+    //[Authorize(Roles = TestDataService.AdminRole)]
     public async Task Post([FromBody] IEnumerable<ProductCategoryDto> productCategoryDtos)
     {
         await PostProductCategoriesActionFactory.Invoke().ExecuteAsync(productCategoryDtos);
     }
 
     [HttpPut]
-    [Authorize(Roles = TestDataService.AdminRole)]
+    //[Authorize(Roles = TestDataService.AdminRole)]
     public async Task Put([FromBody] IEnumerable<ProductCategoryDto> productCategoryDtos)
     {
         await PutProductCategoriesActionFactory.Invoke().ExecuteAsync(productCategoryDtos);
@@ -57,7 +57,7 @@ public class ProductCategoriesController : WebApi.ControllerBase
 
     [HttpDelete]
     [Route("{id}")]
-    [Authorize(Roles = TestDataService.AdminRole)]
+    //[Authorize(Roles = TestDataService.AdminRole)]
     public async Task Delete([FromRoute] Guid id)
     {
         await DeleteProductCategoriesActionFactory.Invoke().ExecuteAsync(id);
