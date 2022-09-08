@@ -1,7 +1,5 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.WebServer.Controllers.ProductCategories;
-using Demo.WebServer.DAL.TestData;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebServer.Controllers;
