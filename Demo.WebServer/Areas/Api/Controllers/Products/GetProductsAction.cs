@@ -1,8 +1,9 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.DAL.Interfaces;
+using Demo.WebApi;
 using Demo.WebServer.DAL.Queries;
 
-namespace Demo.WebServer.Controllers.Products;
+namespace Demo.WebServer.Areas.Api.Controllers.Products;
 
 public class GetProductsAction : DatabaseAction
 {

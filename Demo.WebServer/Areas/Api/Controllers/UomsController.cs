@@ -1,10 +1,12 @@
 ﻿using Demo.Contracts.Dtos;
-using Demo.WebServer.Controllers.Uoms;
+using Demo.WebServer.Areas.Api.Controllers.Uoms;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Demo.WebServer.Controllers;
+namespace Demo.WebServer.Areas.Api.Controllers;
 
-public class UomsController : WebApi.ControllerBase
+[Route("Api/[controller]")]
+[ApiController]
+public class UomsController : Controller 
 {
     public UomsController(
         Func<GetUomsAction> getUomsActionFactory,

@@ -1,7 +1,8 @@
 ﻿using Demo.DAL.Interfaces;
+using Demo.WebApi;
 using Demo.WebServer.Entities;
 
-namespace Demo.WebServer.Controllers.Products;
+namespace Demo.WebServer.Areas.Api.Controllers.Products;
 
 public class DeleteProductsAction : DatabaseAction
 {

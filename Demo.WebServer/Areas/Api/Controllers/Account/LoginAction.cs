@@ -1,12 +1,12 @@
-﻿using Demo.Contracts.Dtos;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Demo.Contracts.Dtos;
 using Demo.WebApi;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
-namespace Demo.WebServer.Controllers.Account;
+namespace Demo.WebServer.Areas.Api.Controllers.Account;
 
 public class LoginAction : IAction
 {

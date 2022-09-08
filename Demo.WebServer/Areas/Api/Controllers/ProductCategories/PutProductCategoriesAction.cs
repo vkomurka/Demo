@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
 using Demo.Contracts.Dtos;
 using Demo.DAL.Interfaces;
+using Demo.WebApi;
 using Demo.WebServer.Entities;
 
-namespace Demo.WebServer.Controllers.ProductCategories;
+namespace Demo.WebServer.Areas.Api.Controllers.ProductCategories;
 
-public class PostProductCategoriesAction : DatabaseAction
+public class PutProductCategoriesAction : DatabaseAction
 {
-    public PostProductCategoriesAction(IMapper mapper, Func<IUnitOfWork> unitOfWorkFactory) : base(unitOfWorkFactory)
+    public PutProductCategoriesAction(IMapper mapper, Func<IUnitOfWork> unitOfWorkFactory) : base(unitOfWorkFactory)
     {
         Mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
@@ -19,7 +20,7 @@ public class PostProductCategoriesAction : DatabaseAction
         using (var uow = UnitOfWorkFactory.Invoke())
         {
             var productCategories = Mapper.Map<List<ProductCategory>>(productCategoryDtos);
-            await uow.Repository<ProductCategory>().AddAsync(productCategories);
+            uow.Repository<ProductCategory>().Update(productCategories);
             await uow.CommitAsync();
         }
     }

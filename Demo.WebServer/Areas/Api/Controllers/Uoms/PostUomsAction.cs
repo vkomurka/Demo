@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
 using Demo.Contracts.Dtos;
 using Demo.DAL.Interfaces;
+using Demo.WebApi;
 using Demo.WebServer.Entities;
 
-namespace Demo.WebServer.Controllers.Uoms;
+namespace Demo.WebServer.Areas.Api.Controllers.Uoms;
 
-public class PutUomsAction : DatabaseAction
+public class PostUomsAction : DatabaseAction
 {
-    public PutUomsAction(IMapper mapper, Func<IUnitOfWork> unitOfWorkFactory) : base(unitOfWorkFactory)
+    public PostUomsAction(IMapper mapper, Func<IUnitOfWork> unitOfWorkFactory) : base(unitOfWorkFactory)
     {
         Mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
@@ -19,7 +20,7 @@ public class PutUomsAction : DatabaseAction
         using (var uow = UnitOfWorkFactory.Invoke())
         {
             var uoms = Mapper.Map<List<Uom>>(uomDtos);
-            uow.Repository<Uom>().Update(uoms);
+            await uow.Repository<Uom>().AddAsync(uoms);
             await uow.CommitAsync();
         }
     }

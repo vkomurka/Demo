@@ -1,10 +1,12 @@
 ﻿using Demo.Contracts.Dtos;
-using Demo.WebServer.Controllers.ProductCategories;
+using Demo.WebServer.Areas.Api.Controllers.ProductCategories;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Demo.WebServer.Controllers;
+namespace Demo.WebServer.Areas.Api.Controllers;
 
-public class ProductCategoriesController : WebApi.ControllerBase
+[Route("Api/[controller]")]
+[ApiController]
+public class ProductCategoriesController : Controller
 {
     public ProductCategoriesController(
         Func<GetProductCategoriesAction> getProductCategoriesActionFactory,

@@ -1,10 +1,12 @@
 ﻿using Demo.Contracts.Dtos;
-using Demo.WebServer.Controllers.Account;
+using Demo.WebServer.Areas.Api.Controllers.Account;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Demo.WebServer.Controllers;
+namespace Demo.WebServer.Areas.Api.Controllers;
 
-public class AccountController : WebApi.ControllerBase
+[Route("Api/[controller]")]
+[ApiController]
+public class AccountController : Controller
 {
     public AccountController(
         Func<RegisterDefaultUsersAction> registerDefaultUsersActionFactory,

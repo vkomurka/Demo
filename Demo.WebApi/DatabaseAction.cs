@@ -1,7 +1,6 @@
 ﻿using Demo.DAL.Interfaces;
-using Demo.WebApi;
 
-namespace Demo.WebServer.Controllers;
+namespace Demo.WebApi;
 
 public class DatabaseAction : IAction
 {
