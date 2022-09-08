@@ -1,9 +1,9 @@
 ﻿using Demo.Contracts.Dtos;
+using Demo.DAL.Actions;
 using Demo.DAL.Interfaces;
-using Demo.WebApi;
 using Demo.WebServer.DAL.Queries;
 
-namespace Demo.WebServer.Areas.Api.Controllers.ProductCategories;
+namespace Demo.WebServer.Controllers.ProductCategories;
 
 public class GetProductCategoriesAction : DatabaseAction
 {

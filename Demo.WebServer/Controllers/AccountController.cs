@@ -1,8 +1,8 @@
 ﻿using Demo.Contracts.Dtos;
-using Demo.WebServer.Areas.Api.Controllers.Account;
+using Demo.WebServer.Controllers.Account;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Demo.WebServer.Areas.Api.Controllers;
+namespace Demo.WebServer.Controllers;
 
 [Route("Api/[controller]")]
 [ApiController]

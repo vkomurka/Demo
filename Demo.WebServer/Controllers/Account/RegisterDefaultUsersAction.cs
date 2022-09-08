@@ -1,8 +1,8 @@
-﻿using Demo.WebApi;
+﻿using Demo.DAL.Actions;
 using Demo.WebServer.DAL.TestData;
 using Microsoft.AspNetCore.Identity;
 
-namespace Demo.WebServer.Areas.Api.Controllers.Account;
+namespace Demo.WebServer.Controllers.Account;
 
 public class RegisterDefaultUsersAction : IAction
 {

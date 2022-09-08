@@ -2,11 +2,11 @@
 using System.Security.Claims;
 using System.Text;
 using Demo.Contracts.Dtos;
-using Demo.WebApi;
+using Demo.DAL.Actions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Demo.WebServer.Areas.Api.Controllers.Account;
+namespace Demo.WebServer.Controllers.Account;
 
 public class LoginAction : IAction
 {

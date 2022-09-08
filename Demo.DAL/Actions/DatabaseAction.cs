@@ -1,6 +1,6 @@
 ﻿using Demo.DAL.Interfaces;
 
-namespace Demo.WebApi;
+namespace Demo.DAL.Actions;
 
 public class DatabaseAction : IAction
 {

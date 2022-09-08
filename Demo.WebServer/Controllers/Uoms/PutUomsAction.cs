@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Demo.Contracts.Dtos;
+using Demo.DAL.Actions;
 using Demo.DAL.Interfaces;
-using Demo.WebApi;
 using Demo.WebServer.Entities;
 
-namespace Demo.WebServer.Areas.Api.Controllers.Uoms;
+namespace Demo.WebServer.Controllers.Uoms;
 
 public class PutUomsAction : DatabaseAction
 {
