@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Demo.Contracts\Demo.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Warhouses\" />
+  </ItemGroup>
+
 </Project>

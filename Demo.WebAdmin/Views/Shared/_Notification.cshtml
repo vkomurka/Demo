@@ -1,19 +1,14 @@
 ﻿@if (TempData["message"] != null)
 {
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script scr="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script type="text/javascript">
-        toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!");
-        toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!');
-        toastr.success('@TempData["message"]');
-    
-    </script>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+        @TempData["message"]
+    </div>
 }
 @if (TempData["error"] != null)
 {
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script scr="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script type="text/javascript">
-        toastr.error('@TempData["error"]');
-    </script>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        @TempData["message"]
+    </div>
 }
