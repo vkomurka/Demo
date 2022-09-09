@@ -1,14 +1,14 @@
-﻿using Demo.Contracts;
-using Demo.Contracts.Dtos;
+﻿using Demo.Contracts.Dtos;
+using Demo.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebAdmin.Controllers;
 
-public class UomsController : Controller
+public class WarehousesController : Controller
 {
     public DemoClient DemoClient { get; }
 
-    public UomsController(DemoClient demoClient)
+    public WarehousesController(DemoClient demoClient)
     {
         DemoClient = demoClient ?? throw new ArgumentNullException(nameof(demoClient));
     }
@@ -16,7 +16,7 @@ public class UomsController : Controller
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        return View(await DemoClient.Uoms.GetAsync());
+        return View(await DemoClient.Warehouses.GetAsync());
     }
 
     [HttpGet]
@@ -27,16 +27,16 @@ public class UomsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(UomDto uom)
+    public async Task<IActionResult> Create(WarehouseDto warehouse)
     {
         if (ModelState.IsValid)
         {
-            uom.Id = Guid.NewGuid();
-            await DemoClient.Uoms.PostAsync(new List<UomDto> { uom });
-            TempData["message"] = "Uom created successfully.";
+            warehouse.Id = Guid.NewGuid();
+            await DemoClient.Warehouses.PostAsync(new List<WarehouseDto> { warehouse });
+            TempData["message"] = "Warehouse created successfully.";
             return RedirectToAction("Index");
         }
-        return View(uom);
+        return View(warehouse);
     }
 
     [HttpGet]
@@ -46,7 +46,7 @@ public class UomsController : Controller
         {
             return NotFound();
         }
-        var uom = await DemoClient.Uoms.GetAsync((Guid)id);
+        var uom = await DemoClient.Warehouses.GetAsync((Guid)id);
 
         if (uom == null)
         {
@@ -57,15 +57,15 @@ public class UomsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(UomDto uom)
+    public async Task<IActionResult> Edit(WarehouseDto warehouse)
     {
         if (ModelState.IsValid)
         {
-            await DemoClient.Uoms.PutAsync(new List<UomDto> { uom });
-            TempData["message"] = "Uom updated successfully.";
+            await DemoClient.Warehouses.PutAsync(new List<WarehouseDto> { warehouse });
+            TempData["message"] = "Warehouse updated successfully.";
             return RedirectToAction("Index");
         }
-        return View(uom);
+        return View(warehouse);
     }
 
     [HttpGet]
@@ -75,7 +75,7 @@ public class UomsController : Controller
         {
             return NotFound();
         }
-        var uom = await DemoClient.Uoms.GetAsync((Guid)id);
+        var uom = await DemoClient.Warehouses.GetAsync((Guid)id);
 
         if (uom == null)
         {
@@ -86,10 +86,10 @@ public class UomsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Delete(UomDto uom)
+    public async Task<IActionResult> Delete(WarehouseDto warehouse)
     {
-        await DemoClient.Uoms.DeleteAsync(uom.Id);
-        TempData["message"] = "Uom deleted successfully.";
+        await DemoClient.Warehouses.DeleteAsync(warehouse.Id);
+        TempData["message"] = "Warehouse deleted successfully.";
         return RedirectToAction("Index");
     }
 }

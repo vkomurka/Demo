@@ -16,6 +16,7 @@ public class DemoClient : RestService
     public ProductClient Products { get; set; }
     public ProductCategoriesClient ProductCategories { get; set; }
     public UomsClient Uoms { get; set; }
+    public WarehousesClient Warehouses { get; set; }
 
     protected override void SetClient(RestClient client)
     {
@@ -24,5 +25,6 @@ public class DemoClient : RestService
         Products = new ProductClient();
         ProductCategories = new ProductCategoriesClient(client);
         Uoms = new UomsClient(client);
+        Warehouses = new WarehousesClient(client);
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Demo.Contracts.Dtos;
 using RestSharp;
 
 namespace Demo.Contracts.RestServices
@@ -15,6 +11,40 @@ namespace Demo.Contracts.RestServices
 
         public ProductClient(RestClient client) : base(client)
         {
+        }
+
+        private const string C_Products = "products";
+
+        public async Task<List<ProductDto>> GetAsync()
+        {
+            var request = new RestRequest(C_Products);
+            return await Client.GetAsync<List<ProductDto>>(request);
+        }
+
+        public async Task<ProductDto> GetAsync(Guid id)
+        {
+            var request = new RestRequest(C_Products + "/" + id);
+            return await Client.GetAsync<ProductDto>(request);
+        }
+
+        public async Task PostAsync(IEnumerable<ProductDto> products)
+        {
+            var request = new RestRequest(C_Products);
+            request.AddBody(products);
+            await Client.PostAsync(request);
+        }
+
+        public async Task PutAsync(IEnumerable<ProductDto> products)
+        {
+            var request = new RestRequest(C_Products);
+            request.AddBody(products);
+            await Client.PutAsync(request);
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var request = new RestRequest(C_Products + "/" + id);
+            await Client.DeleteAsync(request);
         }
     }
 }
