@@ -1,7 +1,20 @@
+using Autofac.Extensions.DependencyInjection;
+using Autofac;
+using Demo.Contracts;
+using Demo.WebClient.Container;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+{
+    builder.RegisterModule(new AutofacModule());
+});
+
+RestServiceConfig.BaseUrl = builder.Configuration.GetSection("DemoApiBaseUrl").Value;
 
 var app = builder.Build();
 

@@ -41,13 +41,14 @@ public class ProductsController : Controller
     [HttpGet]
     [Route("{id}")]
     //[Authorize()]
-    public async Task<ActionResult<List<ProductDto>>> Get([FromRoute] Guid id)
+    public async Task<ActionResult<ProductDto>> Get([FromRoute] Guid id)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
-        return await GetProductsActionFactory.Invoke().ExecuteAsync(id);
+        var products = await GetProductsActionFactory.Invoke().ExecuteAsync(id);
+        return products.FirstOrDefault();
     }
 
     [HttpPost]

@@ -1,7 +1,20 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Demo.Contracts;
+using Demo.WebAdmin.Container;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+{
+    builder.RegisterModule(new AutofacModule());
+});
+
+RestServiceConfig.BaseUrl = builder.Configuration.GetSection("DemoApiBaseUrl").Value;
 
 var app = builder.Build();
 

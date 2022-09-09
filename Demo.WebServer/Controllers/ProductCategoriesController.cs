@@ -36,9 +36,10 @@ public class ProductCategoriesController : Controller
     [HttpGet]
     [Route("{id}")]
     //[Authorize]
-    public async Task<ActionResult<List<ProductCategoryDto>>> Get([FromRoute] Guid id)
+    public async Task<ActionResult<ProductCategoryDto>> Get([FromRoute] Guid id)
     {
-        return await GetProductCategoriesActionFactory.Invoke().ExecuteAsync(id);
+        var categories = await GetProductCategoriesActionFactory.Invoke().ExecuteAsync(id);
+        return categories.FirstOrDefault();
     }
 
     [HttpPost]

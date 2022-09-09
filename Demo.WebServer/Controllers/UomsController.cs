@@ -37,9 +37,10 @@ public class UomsController : Controller
     [HttpGet]
     [Route("{id}")]
     //[Authorize()]
-    public async Task<ActionResult<List<UomDto>>> Get([FromRoute] Guid id)
+    public async Task<ActionResult<UomDto>> Get([FromRoute] Guid id)
     {
-        return await GetUomsActionFactory.Invoke().ExecuteAsync(id);
+        var uoms = await GetUomsActionFactory.Invoke().ExecuteAsync(id);
+        return uoms.FirstOrDefault();
     }
 
     [HttpPost]

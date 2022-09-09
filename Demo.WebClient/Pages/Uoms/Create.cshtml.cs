@@ -1,4 +1,4 @@
-using Demo.ClientServices;
+using Demo.Contracts;
 using Demo.Contracts.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -8,7 +8,13 @@ namespace Demo.WebClient.Pages.Uoms;
 [BindProperties]
 public class CreateModel : PageModel
 {
+    public DemoClient Client { get; }
     public UomDto Uom { get; set; }
+
+    public CreateModel(DemoClient client)
+    {
+        Client = client ?? throw new ArgumentNullException(nameof(client));
+    }
 
     public void OnGet()
     {
@@ -25,8 +31,7 @@ public class CreateModel : PageModel
         if (ModelState.IsValid)
         {
             uom.Id = Guid.NewGuid();
-            var uomService = new UomService();
-            await uomService.AddUoms(new List<UomDto>() { uom });
+            await Client.Uoms.PostUomsAsync(new List<UomDto>() { uom });
             TempData["success"] = "Uom created successfully";
 
             return RedirectToPage("Index");

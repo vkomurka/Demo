@@ -1,28 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Demo.Contracts.Dtos;
+﻿using Demo.Contracts.RestServices;
 using RestSharp;
 
-namespace Demo.Contracts
+namespace Demo.Contracts;
+
+public class DemoClient : RestService
 {
-    public class DemoClient
+    public DemoClient() : base()
     {
-        protected string BaseUrl { get; }
-        protected RestClient Client { get; set; }
+    }
 
+    public DemoClient(RestClient client) : base(client)
+    {
+    }
 
-        public DemoClient(string baseUrl)
-        {
-            BaseUrl = baseUrl ?? throw new ArgumentNullException(nameof(baseUrl));
-            Client = new RestClient(BaseUrl);
+    public ProductClient Products { get; set; }
+    public ProductCategoriesClient ProductCategories { get; set; }
+    public UomsClient Uoms { get; set; }
 
-            Uoms = new UomsClient(Client);
-        }
+    protected override void SetClient(RestClient client)
+    {
+        base.SetClient(client);
 
-        public UomsClient Uoms { get; set; }
-
+        Products = new ProductClient();
+        ProductCategories = new ProductCategoriesClient(client);
+        Uoms = new UomsClient(client);
     }
 }

@@ -1,4 +1,3 @@
-using Demo.ClientServices;
 using Demo.Contracts;
 using Demo.Contracts.Dtos;
 using Microsoft.AspNetCore.Mvc;
@@ -9,13 +8,16 @@ namespace Demo.WebClient.Pages.Uoms;
 [BindProperties]
 public class IndexModel : PageModel
 {
+    public DemoClient Client { get; }
     public List<UomDto> Uoms { get; set; }
+
+    public IndexModel(DemoClient client)
+    {
+        Client = client ?? throw new ArgumentNullException(nameof(client));
+    }
 
     public async Task OnGetAsync()
     {
-        var client = new DemoClient("https://localhost:7111/api/");
-        Uoms = await client.Uoms.GetUomsAsync();
-        //var uomService = new UomService();
-        //Uoms = await uomService.LoadUoms();
+        Uoms = await Client.Uoms.GetUomsAsync();
     }
 }
