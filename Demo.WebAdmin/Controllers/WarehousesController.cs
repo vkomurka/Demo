@@ -46,13 +46,13 @@ public class WarehousesController : Controller
         {
             return NotFound();
         }
-        var uom = await DemoClient.Warehouses.GetAsync((Guid)id);
+        var warehouse = await DemoClient.Warehouses.GetAsync((Guid)id);
 
-        if (uom == null)
+        if (warehouse == null)
         {
             return NotFound();
         }
-        return View(uom);
+        return View(warehouse);
     }
 
     [HttpPost]
@@ -75,13 +75,13 @@ public class WarehousesController : Controller
         {
             return NotFound();
         }
-        var uom = await DemoClient.Warehouses.GetAsync((Guid)id);
+        var warehouse = await DemoClient.Warehouses.GetAsync((Guid)id);
 
-        if (uom == null)
+        if (warehouse == null)
         {
             return NotFound();
         }
-        return View(uom);
+        return View(warehouse);
     }
 
     [HttpPost]
