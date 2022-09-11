@@ -23,17 +23,17 @@
         </tr>
         </thead>
         <tbody>
-        @foreach (var uom in Model)
+        @foreach (var warehouse in Model)
         {
             <tr>
-                <td>@uom.Name</td>
+                <td>@warehouse.Name</td>
                 <td style="width: 250px">
                     <div class="w-100 btn-group" role="group">
-                        <a asp-controller="Warehouses" asp-action="Edit" asp-route-id="@uom.Id" class="btn btn-primary mx-2">
+                        <a asp-controller="Warehouses" asp-action="Edit" asp-route-id="@warehouse.Id" class="btn btn-primary mx-2">
                             <i class="bi bi-pencil-square"></i>
                             Edit
                         </a>
-                            <a asp-controller="Warehouses" asp-action="Delete" asp-route-id="@uom.Id" class="btn btn-danger mx-2">
+                            <a asp-controller="Warehouses" asp-action="Delete" asp-route-id="@warehouse.Id" class="btn btn-danger mx-2">
                             <i class="bi bi-trash-fill"></i>
                             Delete
                         </a>

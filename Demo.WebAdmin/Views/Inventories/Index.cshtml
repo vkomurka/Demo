@@ -19,13 +19,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var uom in Model.OrderBy(c => c.ProductCategoryName).ThenBy(c => c.ProductName))
+            @foreach (var inventory in Model.OrderBy(c => c.ProductCategoryName).ThenBy(c => c.ProductName))
             {
                 <tr>
-                    <td>@uom.ProductCategoryName</td>
-                    <td>@uom.ProductName</td>
-                    <td>@uom.Quantity.ToString("0.00")</td>
-                    <td>@uom.UomCode</td>
+                    <td>@inventory.ProductCategoryName</td>
+                    <td>@inventory.ProductName</td>
+                    <td>@inventory.Quantity.ToString("0.00")</td>
+                    <td>@inventory.UomCode</td>
                 </tr>
             }
         </tbody>

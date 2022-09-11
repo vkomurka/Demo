@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Demo.Contracts.Dtos.ProductDto>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Products</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Products" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>
+                Create New Product
+            </a>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <table class="table table-bordered table-striped" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Product Category</th>
+                <th>Uom</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.OrderBy(c => c.Name))
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.ProductCategoryName</td>
+                    <td>@product.UomCode/td>
+                    <td style="width: 250px">
+                        <div class="w-100 btn-group" role="group">
+                            <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil-square"></i>
+                                Edit
+                            </a>
+                            <a asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash-fill"></i>
+                                Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

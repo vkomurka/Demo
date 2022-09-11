@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebAdmin.Controllers;
 
-public class ProductCategoriesController : Controller
+public class ProductsController : Controller
 {
     public DemoClient DemoClient { get; }
 
-    public ProductCategoriesController(DemoClient demoClient)
+    public ProductsController(DemoClient demoClient)
     {
         DemoClient = demoClient ?? throw new ArgumentNullException(nameof(demoClient));
     }
@@ -16,7 +16,7 @@ public class ProductCategoriesController : Controller
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        return View(await DemoClient.ProductCategories.GetAsync());
+        return View(await DemoClient.Products.GetAsync());
     }
 
     [HttpGet]
@@ -27,16 +27,16 @@ public class ProductCategoriesController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(ProductCategoryDto category)
+    public async Task<IActionResult> Create(ProductDto product)
     {
         if (ModelState.IsValid)
         {
-            category.Id = Guid.NewGuid();
-            await DemoClient.ProductCategories.PostAsync(new List<ProductCategoryDto> { category });
-            TempData["message"] = "Product Category created successfully.";
+            product.Id = Guid.NewGuid();
+            await DemoClient.Products.PostAsync(new List<ProductDto> { product });
+            TempData["message"] = "Product created successfully.";
             return RedirectToAction("Index");
         }
-        return View(category);
+        return View(product);
     }
 
     [HttpGet]
@@ -46,26 +46,26 @@ public class ProductCategoriesController : Controller
         {
             return NotFound();
         }
-        var category = await DemoClient.ProductCategories.GetAsync((Guid)id);
+        var uom = await DemoClient.Products.GetAsync((Guid)id);
 
-        if (category == null)
+        if (uom == null)
         {
             return NotFound();
         }
-        return View(category);
+        return View(uom);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(ProductCategoryDto category)
+    public async Task<IActionResult> Edit(ProductDto product)
     {
         if (ModelState.IsValid)
         {
-            await DemoClient.ProductCategories.PutAsync(new List<ProductCategoryDto> { category });
-            TempData["message"] = "Product Category updated successfully.";
+            await DemoClient.Products.PutAsync(new List<ProductDto> { product });
+            TempData["message"] = "Product updated successfully.";
             return RedirectToAction("Index");
         }
-        return View(category);
+        return View(product);
     }
 
     [HttpGet]
@@ -75,21 +75,21 @@ public class ProductCategoriesController : Controller
         {
             return NotFound();
         }
-        var category = await DemoClient.ProductCategories.GetAsync((Guid)id);
+        var uom = await DemoClient.Products.GetAsync((Guid)id);
 
-        if (category == null)
+        if (uom == null)
         {
             return NotFound();
         }
-        return View(category);
+        return View(uom);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Delete(ProductCategoryDto category)
+    public async Task<IActionResult> Delete(ProductDto product)
     {
-        await DemoClient.ProductCategories.DeleteAsync(category.Id);
-        TempData["message"] = "Product Category deleted successfully.";
+        await DemoClient.Products.DeleteAsync(product.Id);
+        TempData["message"] = "Product deleted successfully.";
         return RedirectToAction("Index");
     }
 }

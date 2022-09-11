@@ -12,12 +12,12 @@ public class InventoriesQuery : QueryBase<InventoryDto>
     {
         return
             from inventory in Context.Set<Inventory>()
-            join product in Context.Set<Product>() on inventory.ProductId equals product.Id into JoinedProducts
-            from jproduct in JoinedProducts.DefaultIfEmpty()
-            join category in Context.Set<ProductCategory>() on jproduct.ProductCategoryId equals category.Id into JoinedCategories
-            from jcategory in JoinedCategories.DefaultIfEmpty()
-            join uom in Context.Set<Uom>() on inventory.UomId equals uom.Id into JoinedUoms
-            from juom in JoinedUoms.DefaultIfEmpty()
+            join product in Context.Set<Product>() on inventory.ProductId equals product.Id into joinedProducts
+            from jproduct in joinedProducts.DefaultIfEmpty()
+            join category in Context.Set<ProductCategory>() on jproduct.ProductCategoryId equals category.Id into joinedCategories
+            from jcategory in joinedCategories.DefaultIfEmpty()
+            join uom in Context.Set<Uom>() on inventory.UomId equals uom.Id into joinedUoms
+            from juom in joinedUoms.DefaultIfEmpty()
             where Id == null || inventory.Id == Id
             select new InventoryDto()
             {
