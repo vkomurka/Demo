@@ -11,20 +11,20 @@ public class ProductsQuery : QueryBase<ProductDto>
     protected override IQueryable<ProductDto> GetRecords()
     {
         return
-            from products in Context.Set<Product>()
-            join uoms in Context.Set<Uom>() on products.UomId equals uoms.Id into joinedUoms
-            from juoms in joinedUoms.DefaultIfEmpty()
-            join categories in Context.Set<ProductCategory>() on products.ProductCategoryId equals categories.Id into joinedCategories
-            from jcategories in joinedCategories.DefaultIfEmpty()
-            where Id == null || products.Id == Id
+            from product in Context.Set<Product>()
+            join uom in Context.Set<Uom>() on product.UomId equals uom.Id into joinedUoms
+            from juom in joinedUoms.DefaultIfEmpty()
+            join category in Context.Set<ProductCategory>() on product.ProductCategoryId equals category.Id into joinedCategories
+            from jcategory in joinedCategories.DefaultIfEmpty()
+            where Id == null || product.Id == Id
             select new ProductDto()
             {
-                Id = products.Id,
-                Name = products.Name,
-                ProductCategoryId = products.ProductCategoryId,
-                UomId = products.UomId,
-                ProductCategoryName = jcategories != null ? jcategories.Name : "",
-                UomCode = juoms != null ? juoms.Code : "",
+                Id = product.Id,
+                Name = product.Name,
+                ProductCategoryId = product.ProductCategoryId,
+                UomId = product.UomId,
+                ProductCategoryName = jcategory != null ? jcategory.Name : "",
+                UomCode = juom != null ? juom.Code : "",
             };
     }
 }

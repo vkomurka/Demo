@@ -11,12 +11,12 @@ namespace Demo.WebServer.DAL.Queries
         protected override IQueryable<WarehouseDto> GetRecords()
         {
             return
-                from uoms in Context.Set<Warehouse>()
-                where Id == null || uoms.Id == Id
+                from warehouse in Context.Set<Warehouse>()
+                where Id == null || warehouse.Id == Id
                 select new WarehouseDto()
                 {
-                    Id = uoms.Id,
-                    Name = uoms.Name,
+                    Id = warehouse.Id,
+                    Name = warehouse.Name,
                 };
         }
     }

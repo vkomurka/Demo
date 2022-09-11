@@ -11,12 +11,12 @@ public class UomsQuery : QueryBase<UomDto>
     protected override IQueryable<UomDto> GetRecords()
     {
         return
-            from uoms in Context.Set<Uom>()
-            where Id == null || uoms.Id == Id
+            from uom in Context.Set<Uom>()
+            where Id == null || uom.Id == Id
             select new UomDto()
             {
-                Id = uoms.Id,
-                Code = uoms.Code,
+                Id = uom.Id,
+                Code = uom.Code,
             };
     }
 }

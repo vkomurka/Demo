@@ -11,12 +11,12 @@ public class ProductCategoriesQuery : QueryBase<ProductCategoryDto>
     protected override IQueryable<ProductCategoryDto> GetRecords()
     {
         return
-            from categories in Context.Set<ProductCategory>()
-            where Id == null || categories.Id == Id
+            from category in Context.Set<ProductCategory>()
+            where Id == null || category.Id == Id
             select new ProductCategoryDto()
             {
-                Id = categories.Id,
-                Name = categories.Name,
+                Id = category.Id,
+                Name = category.Name,
             };
     }
 }

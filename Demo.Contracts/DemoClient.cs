@@ -13,10 +13,12 @@ public class DemoClient : RestService
     {
     }
 
+
     public ProductClient Products { get; set; }
     public ProductCategoriesClient ProductCategories { get; set; }
     public UomsClient Uoms { get; set; }
     public WarehousesClient Warehouses { get; set; }
+
 
     protected override void SetClient(RestClient client)
     {
