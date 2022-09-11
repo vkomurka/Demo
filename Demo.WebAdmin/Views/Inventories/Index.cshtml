@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Demo.Contracts.Dtos.InventoryDto>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Inventories</h2>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <table class="table table-bordered table-striped" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Product Category</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Uom</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var uom in Model.OrderBy(c => c.ProductCategoryName).ThenBy(c => c.ProductName))
+            {
+                <tr>
+                    <td>@uom.ProductCategoryName</td>
+                    <td>@uom.ProductName</td>
+                    <td>@uom.Quantity.ToString("0.00")</td>
+                    <td>@uom.UomCode</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

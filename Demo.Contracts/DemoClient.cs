@@ -14,6 +14,7 @@ public class DemoClient : RestService
     }
 
 
+    public InventoriesClient Inventories { get; set; }
     public ProductClient Products { get; set; }
     public ProductCategoriesClient ProductCategories { get; set; }
     public UomsClient Uoms { get; set; }
@@ -24,6 +25,7 @@ public class DemoClient : RestService
     {
         base.SetClient(client);
 
+        Inventories = new InventoriesClient();
         Products = new ProductClient();
         ProductCategories = new ProductCategoriesClient(client);
         Uoms = new UomsClient(client);
