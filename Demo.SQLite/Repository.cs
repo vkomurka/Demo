@@ -10,12 +10,12 @@ public class Repository<TEntity> : IRepository<TEntity>
     private SQLiteAsyncConnection db;
 
 
-    public async Task AddAsync(TEntity entity)
+    public async Task Add(TEntity entity)
     {
         await db.InsertAsync(entity);
     }
 
-    public async Task AddAsync(IEnumerable<TEntity> entities)
+    public async Task Add(IEnumerable<TEntity> entities)
     {
         await db.InsertAllAsync(entities);
     }
@@ -30,9 +30,9 @@ public class Repository<TEntity> : IRepository<TEntity>
         await db.UpdateAllAsync(entities);
     }
 
-    public async Task DeleteAsync(Guid id)
+    public async Task Delete(Guid id)
     {
-        var entity = await FirstOrDefaultAsync(c => c.Id == id);
+        var entity = await FirstOrDefault(c => c.Id == id);
         await Delete(entity);
     }
 
@@ -49,12 +49,12 @@ public class Repository<TEntity> : IRepository<TEntity>
         }
     }
 
-    public Task<List<TEntity>> GetAsync()
+    public Task<List<TEntity>> Get()
     {
         return db.Table<TEntity>().ToListAsync();
     }
 
-    public async Task<List<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate)
+    public async Task<List<TEntity>> Get(Expression<Func<TEntity, bool>> predicate)
     {
         var query = db.Table<TEntity>();
 
@@ -65,7 +65,7 @@ public class Repository<TEntity> : IRepository<TEntity>
         return await query.ToListAsync();
     }
 
-    public async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+    public async Task<TEntity> FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
     {
         return await db.FindAsync(predicate);
     }

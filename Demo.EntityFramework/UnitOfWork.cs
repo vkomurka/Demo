@@ -18,7 +18,7 @@ namespace Demo.EntityFramework
 
         public async Task<int> CommandAsync(ICommand command)
         {
-            return await command.ExecuteAsync(this);
+            return await command.Execute(this);
         }
 
         public async Task CommitAsync()
@@ -50,7 +50,7 @@ namespace Demo.EntityFramework
 
         public async Task<List<TResult>> QueryAsync<TResult>(IQuery<TResult> query)
         {
-            return await query.ExecuteAsync(this);
+            return await query.Execute(this);
         }
 
         public IRepository<TEntity> Repository<TEntity>() where TEntity : class, IEntity

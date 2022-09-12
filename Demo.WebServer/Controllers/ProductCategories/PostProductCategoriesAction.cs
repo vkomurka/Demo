@@ -20,7 +20,7 @@ public class PostProductCategoriesAction : DatabaseAction
         using (var uow = UnitOfWorkFactory.Invoke())
         {
             var productCategories = Mapper.Map<List<ProductCategory>>(productCategoryDtos);
-            await uow.Repository<ProductCategory>().AddAsync(productCategories);
+            await uow.Repository<ProductCategory>().Add(productCategories);
             await uow.CommitAsync();
         }
     }

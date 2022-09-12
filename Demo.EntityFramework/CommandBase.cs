@@ -5,7 +5,7 @@ namespace Demo.EntityFramework
 {
     public abstract class CommandBase : ICommand
     {
-        public async Task<int> ExecuteAsync(IUnitOfWork unitOfWork)
+        public async Task<int> Execute(IUnitOfWork unitOfWork)
         {
             return await ExecuteSqlCommandAsync(((UnitOfWork)unitOfWork).Context);
         }

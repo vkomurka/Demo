@@ -7,7 +7,7 @@ namespace Demo.EntityFramework
     {
         protected DbContext Context { get; set; }
 
-        public Task<List<TResult>> ExecuteAsync(IUnitOfWork unitOfWork)
+        public Task<List<TResult>> Execute(IUnitOfWork unitOfWork)
         {
             Context = ((UnitOfWork)unitOfWork).Context;
             return GetRecords().ToListAsync();

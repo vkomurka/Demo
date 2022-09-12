@@ -2,5 +2,5 @@
 
 public interface ICommand
 {
-    Task<int> ExecuteAsync(IUnitOfWork unitOfWork);
+    Task<int> Execute(IUnitOfWork unitOfWork);
 }

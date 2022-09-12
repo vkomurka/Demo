@@ -20,7 +20,7 @@ namespace Demo.WebServer.Controllers.Warehouses
             using (var uow = UnitOfWorkFactory.Invoke())
             {
                 var warehouses = Mapper.Map<List<Warehouse>>(warehouseDtos);
-                await uow.Repository<Warehouse>().AddAsync(warehouses);
+                await uow.Repository<Warehouse>().Add(warehouses);
                 await uow.CommitAsync();
             }
         }

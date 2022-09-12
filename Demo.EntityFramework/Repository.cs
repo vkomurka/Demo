@@ -13,20 +13,20 @@ namespace Demo.EntityFramework
 
         protected DbContext Context { get; }
 
-        public async Task AddAsync(TEntity entity)
+        public async Task Add(TEntity entity)
         {
             await Context.AddAsync(entity);
         }
 
-        public async Task AddAsync(IEnumerable<TEntity> entities)
+        public async Task Add(IEnumerable<TEntity> entities)
         {
             await Context.AddRangeAsync(entities);
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task Delete(Guid id)
         {
-            var entity = await FirstOrDefaultAsync(c => c.Id == id);
-            Delete(entity);
+            var entity = await FirstOrDefault(c => c.Id == id);
+            await Delete(entity);
         }
 
         public async Task Delete(TEntity entity)
@@ -41,17 +41,17 @@ namespace Demo.EntityFramework
             await Task.CompletedTask;
         }
 
-        public async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity> FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
         {
             return await Context.Set<TEntity>().FirstOrDefaultAsync(predicate);
         }
 
-        public async Task<List<TEntity>> GetAsync()
+        public async Task<List<TEntity>> Get()
         {
             return await Context.Set<TEntity>().ToListAsync();
         }
 
-        public async Task<List<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<List<TEntity>> Get(Expression<Func<TEntity, bool>> predicate)
         {
             return await Context.Set<TEntity>().Where(predicate).ToListAsync();
         }

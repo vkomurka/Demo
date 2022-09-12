@@ -14,7 +14,7 @@ public class DeleteProductsAction : DatabaseAction
     {
         using (var uow = UnitOfWorkFactory.Invoke())
         {
-            await uow.Repository<Product>().DeleteAsync(id);
+            await uow.Repository<Product>().Delete(id);
             await uow.CommitAsync();
         }
     }

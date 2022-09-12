@@ -20,7 +20,7 @@ public class PostUomsAction : DatabaseAction
         using (var uow = UnitOfWorkFactory.Invoke())
         {
             var uoms = Mapper.Map<List<Uom>>(uomDtos);
-            await uow.Repository<Uom>().AddAsync(uoms);
+            await uow.Repository<Uom>().Add(uoms);
             await uow.CommitAsync();
         }
     }
