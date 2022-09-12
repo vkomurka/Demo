@@ -1,9 +1,9 @@
 ﻿using System.Linq.Expressions;
-using Demo.DAL.Interfaces;
 using Demo.Entities;
+using Demo.EntityFramework.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Demo.DAL
+namespace Demo.EntityFramework
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
     {

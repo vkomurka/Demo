@@ -1,5 +1,5 @@
 ﻿using Demo.Contracts.Dtos;
-using Demo.DAL;
+using Demo.EntityFramework;
 using Demo.WebServer.Entities;
 
 namespace Demo.WebServer.DAL.Queries;
@@ -27,7 +27,7 @@ public class InventoriesQuery : QueryBase<InventoryDto>
                 Quantity = inventory.Quantity,
                 ProductName = jproduct != null ? jproduct.Name : "",
                 ProductCategoryId = jproduct != null ? jproduct.ProductCategoryId : null,
-                ProductCategoryName = jcategory!=null? jcategory.Name : "",
+                ProductCategoryName = jcategory != null ? jcategory.Name : "",
                 UomCode = juom != null ? juom.Code : "",
             };
     }

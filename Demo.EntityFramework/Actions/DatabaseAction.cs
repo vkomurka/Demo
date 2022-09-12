@@ -1,6 +1,6 @@
-﻿using Demo.DAL.Interfaces;
+﻿using Demo.EntityFramework.Interfaces;
 
-namespace Demo.DAL.Actions;
+namespace Demo.EntityFramework.Actions;
 
 public class DatabaseAction : IAction
 {

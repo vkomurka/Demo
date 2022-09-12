@@ -6,7 +6,7 @@ namespace Demo.WebServer.Controllers;
 
 [Route("Api/[controller]")]
 [ApiController]
-public class UomsController : Controller 
+public class UomsController : Controller
 {
     public UomsController(
         Func<GetUomsAction> getUomsActionFactory,

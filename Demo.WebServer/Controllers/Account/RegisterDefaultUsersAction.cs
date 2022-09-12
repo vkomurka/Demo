@@ -1,4 +1,4 @@
-﻿using Demo.DAL.Actions;
+﻿using Demo.EntityFramework.Actions;
 using Demo.WebServer.DAL.TestData;
 using Microsoft.AspNetCore.Identity;
 

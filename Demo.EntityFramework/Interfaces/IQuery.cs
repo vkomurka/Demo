@@ -1,4 +1,4 @@
-﻿namespace Demo.DAL.Interfaces
+﻿namespace Demo.EntityFramework.Interfaces
 {
     public interface IQuery
     {

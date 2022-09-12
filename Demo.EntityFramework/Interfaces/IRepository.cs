@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Demo.Entities;
 
-namespace Demo.DAL.Interfaces
+namespace Demo.EntityFramework.Interfaces
 {
     public interface IRepository<TEntity>
         where TEntity : class, IEntity

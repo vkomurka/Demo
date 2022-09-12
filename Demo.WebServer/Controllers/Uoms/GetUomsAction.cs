@@ -1,6 +1,6 @@
 ﻿using Demo.Contracts.Dtos;
-using Demo.DAL.Actions;
-using Demo.DAL.Interfaces;
+using Demo.EntityFramework.Actions;
+using Demo.EntityFramework.Interfaces;
 using Demo.WebServer.DAL.Queries;
 
 namespace Demo.WebServer.Controllers.Uoms;

@@ -1,7 +1,7 @@
-﻿using Demo.DAL.Interfaces;
+﻿using Demo.EntityFramework.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Demo.DAL
+namespace Demo.EntityFramework
 {
     public abstract class QueryBase<TResult> : IQuery<TResult>
     {

@@ -1,5 +1,5 @@
 ﻿using Demo.Contracts.Dtos;
-using Demo.DAL;
+using Demo.EntityFramework;
 using Demo.WebServer.Entities;
 
 namespace Demo.WebServer.DAL.Queries;

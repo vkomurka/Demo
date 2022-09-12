@@ -1,5 +1,5 @@
-﻿using Demo.DAL.Actions;
-using Demo.DAL.Interfaces;
+﻿using Demo.EntityFramework.Actions;
+using Demo.EntityFramework.Interfaces;
 using Demo.WebServer.Entities;
 
 namespace Demo.WebServer.Controllers.Warehouses;
