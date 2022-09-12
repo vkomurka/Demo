@@ -1,5 +1,5 @@
 ﻿using Demo.Contracts.Dtos;
-using Demo.EntityFramework.Actions;
+using Demo.DAL;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

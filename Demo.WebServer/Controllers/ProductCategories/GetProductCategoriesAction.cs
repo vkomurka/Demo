@@ -1,6 +1,5 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.DAL;
-using Demo.EntityFramework.Actions;
 using Demo.WebServer.DAL.Queries;
 
 namespace Demo.WebServer.Controllers.ProductCategories;
