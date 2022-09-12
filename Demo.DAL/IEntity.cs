@@ -1,4 +1,4 @@
-﻿namespace Demo.Entities;
+﻿namespace Demo.DAL;
 
 public interface IEntity
 {

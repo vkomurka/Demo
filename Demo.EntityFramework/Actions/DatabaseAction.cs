@@ -1,4 +1,4 @@
-﻿using Demo.EntityFramework.Interfaces;
+﻿using Demo.DAL;
 
 namespace Demo.EntityFramework.Actions;
 

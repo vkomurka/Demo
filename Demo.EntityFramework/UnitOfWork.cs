@@ -1,5 +1,4 @@
-﻿using Demo.Entities;
-using Demo.EntityFramework.Interfaces;
+﻿using Demo.DAL;
 using Microsoft.EntityFrameworkCore;
 
 namespace Demo.EntityFramework

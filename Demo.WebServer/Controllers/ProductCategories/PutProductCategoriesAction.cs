@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Demo.Contracts.Dtos;
+using Demo.DAL;
 using Demo.EntityFramework.Actions;
-using Demo.EntityFramework.Interfaces;
 using Demo.WebServer.Entities;
 
 namespace Demo.WebServer.Controllers.ProductCategories;

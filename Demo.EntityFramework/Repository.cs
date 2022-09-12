@@ -1,7 +1,6 @@
-﻿using System.Linq.Expressions;
-using Demo.Entities;
-using Demo.EntityFramework.Interfaces;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+using Demo.DAL;
 
 namespace Demo.EntityFramework
 {

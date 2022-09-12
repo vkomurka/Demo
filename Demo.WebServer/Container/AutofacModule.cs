@@ -1,6 +1,6 @@
 ﻿using Autofac;
+using Demo.DAL;
 using Demo.EntityFramework;
-using Demo.EntityFramework.Interfaces;
 using Demo.WebServer.DAL;
 using Microsoft.EntityFrameworkCore;
 

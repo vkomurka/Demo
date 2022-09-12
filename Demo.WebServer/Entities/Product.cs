@@ -1,4 +1,4 @@
-﻿using Demo.Entities;
+﻿using Demo.DAL;
 
 namespace Demo.WebServer.Entities;
 
