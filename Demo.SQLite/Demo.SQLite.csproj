@@ -10,4 +10,8 @@
     <PackageReference Include="SQLite.Net.Async-PCL" Version="3.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.DAL\Demo.DAL.csproj" />
+  </ItemGroup>
+
 </Project>

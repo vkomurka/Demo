@@ -29,14 +29,16 @@ namespace Demo.EntityFramework
             Delete(entity);
         }
 
-        public void Delete(TEntity entity)
+        public async Task Delete(TEntity entity)
         {
             Context.Set<TEntity>().Remove(entity);
+            await Task.CompletedTask;
         }
 
-        public void Delete(IEnumerable<TEntity> entities)
+        public async Task Delete(IEnumerable<TEntity> entities)
         {
             Context.Set<TEntity>().RemoveRange(entities);
+            await Task.CompletedTask;
         }
 
         public async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
@@ -54,14 +56,16 @@ namespace Demo.EntityFramework
             return await Context.Set<TEntity>().Where(predicate).ToListAsync();
         }
 
-        public void Update(TEntity entity)
+        public async Task Update(TEntity entity)
         {
             Context.Set<TEntity>().Update(entity);
+            await Task.CompletedTask;
         }
 
-        public void Update(IEnumerable<TEntity> entities)
+        public async Task Update(IEnumerable<TEntity> entities)
         {
             Context.Set<TEntity>().UpdateRange(entities);
+            await Task.CompletedTask;
         }
     }
 }

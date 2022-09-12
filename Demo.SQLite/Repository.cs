@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-using Demo.Entities;
+using Demo.DAL;
 using SQLite.Net.Async;
 
 namespace Demo.SQLite;

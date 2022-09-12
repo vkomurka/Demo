@@ -8,12 +8,12 @@ public interface IRepository<TEntity>
     Task AddAsync(TEntity entity);
     Task AddAsync(IEnumerable<TEntity> entities);
 
-    void Update(TEntity entity);
-    void Update(IEnumerable<TEntity> entities);
+    Task Update(TEntity entity);
+    Task Update(IEnumerable<TEntity> entities);
 
     Task DeleteAsync(Guid id);
-    void Delete(TEntity entity);
-    void Delete(IEnumerable<TEntity> entities);
+    Task Delete(TEntity entity);
+    Task Delete(IEnumerable<TEntity> entities);
 
     Task<List<TEntity>> GetAsync();
     Task<List<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate);
