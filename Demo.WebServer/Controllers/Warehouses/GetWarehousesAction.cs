@@ -20,7 +20,7 @@ public class GetWarehousesAction : DatabaseAction
         using (var uow = UnitOfWorkFactory.Invoke())
         {
             WarehousesQuery.Id = id;
-            return await uow.QueryAsync(WarehousesQuery);
+            return await uow.Query(WarehousesQuery);
         }
     }
 }

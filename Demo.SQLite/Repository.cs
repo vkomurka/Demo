@@ -1,33 +1,47 @@
 ﻿using System.Linq.Expressions;
 using Demo.DAL;
-using SQLite.Net.Async;
+using SQLite;
 
 namespace Demo.SQLite;
 
 public class Repository<TEntity> : IRepository<TEntity>
-    where TEntity : class, IEntity
+    where TEntity : class, IEntity, new()
 {
-    private SQLiteAsyncConnection db;
+    public SQLiteConnection Connection { get; }
 
+    public Repository(SQLiteConnection connection)
+    {
+        Connection = connection ?? throw new ArgumentNullException(nameof(connection));
+    }
+
+    public async Task Init()
+    {
+        Connection.CreateTable<TEntity>();
+        await Task.CompletedTask;
+    }
 
     public async Task Add(TEntity entity)
     {
-        await db.InsertAsync(entity);
+        Connection.Insert(entity);
+        await Task.CompletedTask;
     }
 
     public async Task Add(IEnumerable<TEntity> entities)
     {
-        await db.InsertAllAsync(entities);
+        Connection.InsertAll(entities);
+        await Task.CompletedTask;
     }
 
     public async Task Update(TEntity entity)
     {
-        await db.UpdateAsync(entity);
+        Connection.Update(entity);
+        await Task.CompletedTask;
     }
 
     public async Task Update(IEnumerable<TEntity> entities)
     {
-        await db.UpdateAllAsync(entities);
+        Connection.UpdateAll(entities);
+        await Task.CompletedTask;
     }
 
     public async Task Delete(Guid id)
@@ -38,7 +52,8 @@ public class Repository<TEntity> : IRepository<TEntity>
 
     public async Task Delete(TEntity entity)
     {
-        await db.DeleteAsync(entity);
+        Connection.Delete(entity);
+        await Task.CompletedTask;
     }
 
     public async Task Delete(IEnumerable<TEntity> entities)
@@ -49,24 +64,24 @@ public class Repository<TEntity> : IRepository<TEntity>
         }
     }
 
-    public Task<List<TEntity>> Get()
+    public async Task<List<TEntity>> Get()
     {
-        return db.Table<TEntity>().ToListAsync();
+        return await Task.FromResult(Connection.Table<TEntity>().ToList());
     }
 
     public async Task<List<TEntity>> Get(Expression<Func<TEntity, bool>> predicate)
     {
-        var query = db.Table<TEntity>();
+        var query = Connection.Table<TEntity>();
 
         if (predicate != null)
         {
             query = query.Where(predicate);
         }
-        return await query.ToListAsync();
+        return await Task.FromResult(query.ToList());
     }
 
     public async Task<TEntity> FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
     {
-        return await db.FindAsync(predicate);
+        return await Task.FromResult(Connection.Find(predicate));
     }
 }

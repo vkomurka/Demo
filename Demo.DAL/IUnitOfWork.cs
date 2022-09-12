@@ -2,10 +2,10 @@
 
 public interface IUnitOfWork : IDisposable
 {
-    IRepository<TEntity> Repository<TEntity>() where TEntity : class, IEntity;
+    IRepository<TEntity> Repository<TEntity>() where TEntity : class, IEntity, new();
 
-    Task<List<TResult>> QueryAsync<TResult>(IQuery<TResult> query);
-    Task<int> CommandAsync(ICommand command);
+    Task<List<TResult>> Query<TResult>(IQuery<TResult> query);
+    Task<int> Command(ICommand command);
 
-    Task CommitAsync();
+    Task Commit();
 }

@@ -19,7 +19,7 @@ public class GetUomsAction : DatabaseAction
         using (var uow = UnitOfWorkFactory.Invoke())
         {
             UomsQuery.Id = id;
-            return await uow.QueryAsync(UomsQuery);
+            return await uow.Query(UomsQuery);
         }
     }
 }

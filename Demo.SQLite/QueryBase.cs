@@ -1,16 +1,16 @@
 ﻿using Demo.DAL;
-using Microsoft.EntityFrameworkCore;
+using SQLite;
 
-namespace Demo.EntityFramework;
+namespace Demo.SQLite;
 
 public abstract class QueryBase<TResult> : IQuery<TResult>
 {
-    protected DbContext Context { get; set; }
+    protected SQLiteConnection Connection { get; set; }
 
     public Task<List<TResult>> Execute(IUnitOfWork unitOfWork)
     {
-        Context = ((UnitOfWork)unitOfWork).Context;
-        return GetRecords().ToListAsync();
+        Connection = ((UnitOfWork)unitOfWork).Connection;
+        return Task.FromResult(GetRecords().ToList());
     }
 
     protected abstract IQueryable<TResult> GetRecords();

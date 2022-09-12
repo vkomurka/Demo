@@ -21,7 +21,7 @@ public class PutProductsAction : DatabaseAction
         {
             var products = Mapper.Map<List<Product>>(productDtos);
             uow.Repository<Product>().Update(products);
-            await uow.CommitAsync();
+            await uow.Commit();
         }
     }
 }

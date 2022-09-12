@@ -21,7 +21,7 @@ public class PostProductCategoriesAction : DatabaseAction
         {
             var productCategories = Mapper.Map<List<ProductCategory>>(productCategoryDtos);
             await uow.Repository<ProductCategory>().Add(productCategories);
-            await uow.CommitAsync();
+            await uow.Commit();
         }
     }
 }

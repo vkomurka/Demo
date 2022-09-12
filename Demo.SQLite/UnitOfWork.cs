@@ -1,16 +1,17 @@
 ﻿using Demo.DAL;
-using Microsoft.EntityFrameworkCore;
+using SQLite;
 
-namespace Demo.EntityFramework;
+namespace Demo.SQLite;
 
 public class UnitOfWork : IUnitOfWork
 {
-    public UnitOfWork(DbContext context)
+    public UnitOfWork(SQLiteConnection connection)
     {
-        Context = context ?? throw new ArgumentNullException(nameof(context));
+        Connection = connection ?? throw new ArgumentNullException(nameof(connection));
+        Connection.BeginTransaction();
     }
 
-    public DbContext Context { get; protected set; }
+    public SQLiteConnection Connection { get; }
 
     protected Dictionary<Type, object> Repositories { get; set; }
     private bool Disposed = false;
@@ -23,7 +24,8 @@ public class UnitOfWork : IUnitOfWork
 
     public async Task Commit()
     {
-        await Context.SaveChangesAsync();
+        Connection.Commit();
+        await Task.CompletedTask;
     }
 
     public void Dispose()
@@ -42,7 +44,7 @@ public class UnitOfWork : IUnitOfWork
                 {
                     Repositories.Clear();
                 }
-                Context.Dispose();
+                Connection.Dispose();
             }
         }
         Disposed = true;
@@ -63,7 +65,7 @@ public class UnitOfWork : IUnitOfWork
         var type = typeof(TEntity);
         if (!Repositories.ContainsKey(type))
         {
-            Repositories[type] = new Repository<TEntity>(Context);
+            Repositories[type] = new Repository<TEntity>(Connection);
         }
         return (IRepository<TEntity>)Repositories[type];
     }

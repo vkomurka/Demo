@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.SQLite", "Demo.SQLite\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.DAL", "Demo.DAL\Demo.DAL.csproj", "{8BD112B6-8ED2-4704-8FE7-B4B96A357329}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{9DE33384-98A0-4CCB-9B93-44EED3804F13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{17441447-BCA9-4E71-B402-023E179AD1C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +63,14 @@ Global
 		{8BD112B6-8ED2-4704-8FE7-B4B96A357329}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BD112B6-8ED2-4704-8FE7-B4B96A357329}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BD112B6-8ED2-4704-8FE7-B4B96A357329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DE33384-98A0-4CCB-9B93-44EED3804F13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE33384-98A0-4CCB-9B93-44EED3804F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE33384-98A0-4CCB-9B93-44EED3804F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE33384-98A0-4CCB-9B93-44EED3804F13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17441447-BCA9-4E71-B402-023E179AD1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17441447-BCA9-4E71-B402-023E179AD1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17441447-BCA9-4E71-B402-023E179AD1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17441447-BCA9-4E71-B402-023E179AD1C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

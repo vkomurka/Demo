@@ -19,7 +19,7 @@ public class GetProductCategoriesAction : DatabaseAction
         using (var uow = UnitOfWorkFactory.Invoke())
         {
             ProductCategoriesQuery.Id = id;
-            return await uow.QueryAsync(ProductCategoriesQuery);
+            return await uow.Query(ProductCategoriesQuery);
         }
     }
 }

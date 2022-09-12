@@ -21,7 +21,7 @@ public class PutUomsAction : DatabaseAction
         {
             var uoms = Mapper.Map<List<Uom>>(uomDtos);
             uow.Repository<Uom>().Update(uoms);
-            await uow.CommitAsync();
+            await uow.Commit();
         }
     }
 }

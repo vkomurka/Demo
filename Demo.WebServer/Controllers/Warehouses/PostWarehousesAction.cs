@@ -21,7 +21,7 @@ namespace Demo.WebServer.Controllers.Warehouses
             {
                 var warehouses = Mapper.Map<List<Warehouse>>(warehouseDtos);
                 await uow.Repository<Warehouse>().Add(warehouses);
-                await uow.CommitAsync();
+                await uow.Commit();
             }
         }
     }

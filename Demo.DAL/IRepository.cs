@@ -3,8 +3,10 @@
 namespace Demo.DAL;
 
 public interface IRepository<TEntity>
-    where TEntity : class, IEntity
+    where TEntity : class, IEntity, new()
 {
+    Task Init();
+
     Task Add(TEntity entity);
     Task Add(IEnumerable<TEntity> entities);
 

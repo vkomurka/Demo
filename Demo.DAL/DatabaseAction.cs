@@ -1,6 +1,4 @@
-﻿using Demo.DAL;
-
-namespace Demo.EntityFramework.Actions;
+﻿namespace Demo.DAL;
 
 public class DatabaseAction : IAction
 {
