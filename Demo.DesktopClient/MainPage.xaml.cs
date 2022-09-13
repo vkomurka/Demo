@@ -1,24 +1,33 @@
-﻿namespace Demo.DesktopClient
+﻿using Demo.Desktop.Model;
+using Demo.Desktop.Model.Entities;
+using Microsoft.EntityFrameworkCore;
+
+namespace Demo.DesktopClient
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        public Context Context { get; set; }
 
-        public MainPage()
+        public MainPage(Context context)
         {
+            context.Database.Migrate();
+
+            Context = context ?? throw new ArgumentNullException(nameof(context));
+            var setting = context.Settings.FirstOrDefault();
+
             InitializeComponent();
+
+            if (setting != null)
+            {
+                DemoServerBaseUrlEditor.Text = setting.DemoServerBaseUrl;
+            }
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void SaveButton_OnClicked(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            var setting = Context.Settings.FirstOrDefault();
+            setting.DemoServerBaseUrl = DemoServerBaseUrlEditor.Text;
+            Context.SaveChanges();
         }
     }
 }

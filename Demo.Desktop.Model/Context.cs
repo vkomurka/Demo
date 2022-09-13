@@ -10,6 +10,11 @@ public class Context : DbContext
 
     public Context()
     {
+        ConnectionString = @"Filename=./DemoClient.db";
+    }
+
+    public Context(DbContextOptions options) : base(options)
+    {
     }
 
     public Context(string connectionString)
@@ -28,10 +33,6 @@ public class Context : DbContext
         if (!string.IsNullOrEmpty(ConnectionString))
         {
             optionsBuilder.UseSqlite(ConnectionString);
-        }
-        else
-        {
-            optionsBuilder.UseSqlite(@"Filename=./DemoClient.db");
         }
     }
 
