@@ -1,4 +1,5 @@
 ﻿using Demo.DAL;
+using Demo.WebServer.Model.RolesService;
 using Demo.WebServer.Model.TestData;
 using Microsoft.AspNetCore.Identity;
 
@@ -24,7 +25,7 @@ public class RegisterDefaultUsersAction : IAction
         var result = await UserManager.CreateAsync(adminUser, "Password-123");
         if (result.Succeeded)
         {
-            await UserManager.AddToRoleAsync(adminUser, TestDataService.AdminRole);
+            await UserManager.AddToRoleAsync(adminUser, ConstsService.AdminRole);
         }
 
         var user = new IdentityUser()
@@ -34,6 +35,6 @@ public class RegisterDefaultUsersAction : IAction
         };
 
         await UserManager.CreateAsync(user, "Password-456");
-        await UserManager.AddToRoleAsync(user, TestDataService.UserRole);
+        await UserManager.AddToRoleAsync(user, ConstsService.UserRole);
     }
 }

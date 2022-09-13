@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Demo.WebServer.Model.RolesService;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -11,7 +12,7 @@ public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
         builder.HasData(
             new IdentityRole()
             {
-                Name = "Administrator",
+                Name = ConstsService.AdminRole,
                 NormalizedName = "ADMIN",
             },
             new IdentityRole()

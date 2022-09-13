@@ -1,5 +1,8 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.WebServer.Controllers.ProductCategories;
+using Demo.WebServer.Model.Roles;
+using Demo.WebServer.Model.RolesService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebServer.Controllers;
@@ -27,7 +30,7 @@ public class ProductCategoriesController : Controller
     public Func<DeleteProductCategoriesAction> DeleteProductCategoriesActionFactory { get; }
 
     [HttpGet]
-    //[Authorize]
+    [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
     public async Task<ActionResult<List<ProductCategoryDto>>> Get()
     {
         return await GetProductCategoriesActionFactory.Invoke().ExecuteAsync(null);
@@ -35,7 +38,7 @@ public class ProductCategoriesController : Controller
 
     [HttpGet]
     [Route("{id}")]
-    //[Authorize]
+    [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
     public async Task<ActionResult<ProductCategoryDto>> Get([FromRoute] Guid id)
     {
         var categories = await GetProductCategoriesActionFactory.Invoke().ExecuteAsync(id);
@@ -43,14 +46,14 @@ public class ProductCategoriesController : Controller
     }
 
     [HttpPost]
-    //[Authorize(Roles = TestDataService.AdminRole)]
+    [Roles(ConstsService.AdminRole)]
     public async Task Post([FromBody] IEnumerable<ProductCategoryDto> productCategoryDtos)
     {
         await PostProductCategoriesActionFactory.Invoke().ExecuteAsync(productCategoryDtos);
     }
 
     [HttpPut]
-    //[Authorize(Roles = TestDataService.AdminRole)]
+    [Roles(ConstsService.AdminRole)]
     public async Task Put([FromBody] IEnumerable<ProductCategoryDto> productCategoryDtos)
     {
         await PutProductCategoriesActionFactory.Invoke().ExecuteAsync(productCategoryDtos);
@@ -58,7 +61,7 @@ public class ProductCategoriesController : Controller
 
     [HttpDelete]
     [Route("{id}")]
-    //[Authorize(Roles = TestDataService.AdminRole)]
+    [Roles(ConstsService.AdminRole)]
     public async Task Delete([FromRoute] Guid id)
     {
         await DeleteProductCategoriesActionFactory.Invoke().ExecuteAsync(id);

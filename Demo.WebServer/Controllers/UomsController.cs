@@ -1,5 +1,9 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.WebServer.Controllers.Uoms;
+using Demo.WebServer.Model.Roles;
+using Demo.WebServer.Model.RolesService;
+using Demo.WebServer.Model.TestData;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebServer.Controllers;
@@ -28,7 +32,7 @@ public class UomsController : Controller
 
 
     [HttpGet]
-    //[Authorize()]
+    [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
     public async Task<ActionResult<List<UomDto>>> Get()
     {
         return await GetUomsActionFactory.Invoke().ExecuteAsync(null);
@@ -36,7 +40,7 @@ public class UomsController : Controller
 
     [HttpGet]
     [Route("{id}")]
-    //[Authorize()]
+    [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
     public async Task<ActionResult<UomDto>> Get([FromRoute] Guid id)
     {
         var uoms = await GetUomsActionFactory.Invoke().ExecuteAsync(id);
@@ -44,14 +48,14 @@ public class UomsController : Controller
     }
 
     [HttpPost]
-    //[Authorize(Roles = TestDataService.AdminRole)]
+    [Roles(ConstsService.AdminRole)]
     public async Task Post([FromBody] IEnumerable<UomDto> uoms)
     {
         await PostUomsActionFactory.Invoke().ExecuteAsync(uoms);
     }
 
     [HttpPut]
-    //[Authorize(Roles = TestDataService.AdminRole)]
+    [Roles(ConstsService.AdminRole)]
     public async Task Put([FromBody] IEnumerable<UomDto> uoms)
     {
         await PutUomsActionFactory.Invoke().ExecuteAsync(uoms);
@@ -59,7 +63,7 @@ public class UomsController : Controller
 
     [HttpDelete]
     [Route("{id}")]
-    //[Authorize(Roles = TestDataService.AdminRole)]
+    [Roles(ConstsService.AdminRole)]
     public async Task Delete([FromRoute] Guid id)
     {
         await DeleteUomsActionFactory.Invoke().ExecuteAsync(id);

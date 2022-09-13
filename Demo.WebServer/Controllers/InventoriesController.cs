@@ -1,5 +1,8 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.WebServer.Controllers.Inventories;
+using Demo.WebServer.Model.Roles;
+using Demo.WebServer.Model.RolesService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebServer.Controllers;
@@ -19,7 +22,7 @@ public class InventoriesController : Controller
 
 
     [HttpGet]
-    //[Authorize]
+    [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
     public async Task<ActionResult<List<InventoryDto>>> Get()
     {
         return await GetInventoriesActionFactory.Invoke().ExecuteAsync(null);
@@ -27,7 +30,7 @@ public class InventoriesController : Controller
 
     [HttpGet]
     [Route("{id}")]
-    //[Authorize]
+    [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
     public async Task<ActionResult<InventoryDto>> Get([FromRoute] Guid id)
     {
         var categories = await GetInventoriesActionFactory.Invoke().ExecuteAsync(id);

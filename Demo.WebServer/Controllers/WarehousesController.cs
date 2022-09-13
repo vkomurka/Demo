@@ -1,6 +1,9 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.WebServer.Controllers.Warehouses;
+using Demo.WebServer.Model.RolesService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Demo.WebServer.Model.Roles;
 
 namespace Demo.WebServer.Controllers
 {
@@ -27,7 +30,7 @@ namespace Demo.WebServer.Controllers
         }
 
         [HttpGet]
-        //[Authorize()]
+        [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
         public async Task<ActionResult<List<WarehouseDto>>> Get()
         {
             return await GetWarehousesActionFactory.Invoke().ExecuteAsync(null);
@@ -35,7 +38,7 @@ namespace Demo.WebServer.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        //[Authorize()]
+        [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
         public async Task<ActionResult<WarehouseDto>> Get([FromRoute] Guid id)
         {
             var uoms = await GetWarehousesActionFactory.Invoke().ExecuteAsync(id);
@@ -43,14 +46,14 @@ namespace Demo.WebServer.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = TestDataService.AdminRole)]
+        [Roles(ConstsService.AdminRole)]
         public async Task Post([FromBody] IEnumerable<WarehouseDto> warehouses)
         {
             await PostWarehousesActionFactory.Invoke().ExecuteAsync(warehouses);
         }
 
         [HttpPut]
-        //[Authorize(Roles = TestDataService.AdminRole)]
+        [Roles(ConstsService.AdminRole)]
         public async Task Put([FromBody] IEnumerable<WarehouseDto> warehouses)
         {
             await PutWarehousesActionFactory.Invoke().ExecuteAsync(warehouses);
@@ -58,7 +61,7 @@ namespace Demo.WebServer.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        //[Authorize(Roles = TestDataService.AdminRole)]
+        [Roles(ConstsService.AdminRole)]
         public async Task Delete([FromRoute] Guid id)
         {
             await DeleteWarehousesActionFactory.Invoke().ExecuteAsync(id);
