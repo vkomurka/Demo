@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Demo.Contracts.Dtos;
 using Demo.DAL;
-using Demo.WebServer.Entities;
+using Demo.WebServer.Model.Entities;
 
 namespace Demo.WebServer.Controllers.Uoms;
 

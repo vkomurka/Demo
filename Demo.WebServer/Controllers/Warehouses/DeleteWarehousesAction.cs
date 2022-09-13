@@ -1,5 +1,5 @@
 ﻿using Demo.DAL;
-using Demo.WebServer.Entities;
+using Demo.WebServer.Model.Entities;
 
 namespace Demo.WebServer.Controllers.Warehouses;
 

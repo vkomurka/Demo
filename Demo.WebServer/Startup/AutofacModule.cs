@@ -1,10 +1,10 @@
 ﻿using Autofac;
 using Demo.DAL;
 using Demo.EntityFramework;
-using Demo.WebServer.DAL;
+using Demo.WebServer.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Demo.WebServer.Container;
+namespace Demo.WebServer.Startup;
 
 public class AutofacModule : Module
 {

@@ -1,9 +1,9 @@
-﻿using Demo.WebServer.Entities;
+﻿using Demo.WebServer.Model.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Demo.WebServer.DAL;
+namespace Demo.WebServer.Model;
 
 public class Context : IdentityDbContext<IdentityUser>
 {

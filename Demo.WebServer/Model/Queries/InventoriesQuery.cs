@@ -1,8 +1,8 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.EntityFramework;
-using Demo.WebServer.Entities;
+using Demo.WebServer.Model.Entities;
 
-namespace Demo.WebServer.DAL.Queries;
+namespace Demo.WebServer.Model.Queries;
 
 public class InventoriesQuery : QueryBase<InventoryDto>
 {

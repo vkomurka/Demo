@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Demo.Contracts.Dtos;
-using Demo.WebServer.Entities;
+using Demo.WebServer.Model.Entities;
 using Microsoft.AspNetCore.Identity;
 
-namespace Demo.WebServer.Mapper;
+namespace Demo.WebServer.Startup;
 
 public class MapperConfig : Profile
 {

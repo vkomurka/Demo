@@ -1,8 +1,5 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Demo.WebServer.Container;
-using Demo.WebServer.DAL;
-using Demo.WebServer.Mapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +7,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
+using Demo.WebServer.Model;
+using Demo.WebServer.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
 

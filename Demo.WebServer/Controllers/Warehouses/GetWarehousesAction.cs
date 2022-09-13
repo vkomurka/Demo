@@ -1,6 +1,6 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.DAL;
-using Demo.WebServer.DAL.Queries;
+using Demo.WebServer.Model.Queries;
 
 namespace Demo.WebServer.Controllers.Warehouses;
 

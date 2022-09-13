@@ -1,5 +1,5 @@
 ﻿using Demo.DAL;
-using Demo.WebServer.DAL.TestData;
+using Demo.WebServer.Model.TestData;
 using Microsoft.AspNetCore.Identity;
 
 namespace Demo.WebServer.Controllers.Account;

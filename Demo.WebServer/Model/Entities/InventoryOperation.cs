@@ -1,6 +1,6 @@
 ﻿using Demo.DAL;
 
-namespace Demo.WebServer.Entities;
+namespace Demo.WebServer.Model.Entities;
 
 public class InventoryOperation : IEntity
 {

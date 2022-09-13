@@ -1,9 +1,9 @@
-﻿using Demo.WebServer.DAL.TestData;
-using Demo.WebServer.Entities;
+﻿using Demo.WebServer.Model.Entities;
+using Demo.WebServer.Model.TestData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Demo.WebServer.DAL.Configurations;
+namespace Demo.WebServer.Model.Configurations;
 
 public class ProductCategoryConfiguration : IEntityTypeConfiguration<ProductCategory>
 {
