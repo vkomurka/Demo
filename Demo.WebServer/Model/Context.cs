@@ -53,8 +53,8 @@ public class Context : IdentityDbContext<IdentityUser>
         modelBuilder.Entity<Warehouse>().HasKey(t => t.Id).IsClustered(false);
 
         //modelBuilder.ApplyConfiguration(new RoleConfiguration());
-        // modelBuilder.ApplyConfiguration(new UomConfiguration());
-        // modelBuilder.ApplyConfiguration(new ProductCategoryConfiguration());
-        // modelBuilder.ApplyConfiguration(new ProductConfiguration());
+        //modelBuilder.ApplyConfiguration(new UomConfiguration());
+        //modelBuilder.ApplyConfiguration(new ProductCategoryConfiguration());
+        //modelBuilder.ApplyConfiguration(new ProductConfiguration());
     }
 }

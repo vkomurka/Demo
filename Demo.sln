@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.EntityFramework", "Dem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.DAL", "Demo.DAL\Demo.DAL.csproj", "{8BD112B6-8ED2-4704-8FE7-B4B96A357329}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Desktop.Model", "Demo.Desktop.Model\Demo.Desktop.Model.csproj", "{1EC718B4-A527-4086-9F0F-CDD639DD1A2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Desktop.Model", "Demo.Desktop.Model\Demo.Desktop.Model.csproj", "{1EC718B4-A527-4086-9F0F-CDD639DD1A2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Desktop.Model.Updater", "Demo.Desktop.Model.Updater\Demo.Desktop.Model.Updater.csproj", "{0AEA4AF7-88E6-4F50-9C7C-BCE5B007972B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{1EC718B4-A527-4086-9F0F-CDD639DD1A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EC718B4-A527-4086-9F0F-CDD639DD1A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EC718B4-A527-4086-9F0F-CDD639DD1A2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AEA4AF7-88E6-4F50-9C7C-BCE5B007972B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AEA4AF7-88E6-4F50-9C7C-BCE5B007972B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AEA4AF7-88E6-4F50-9C7C-BCE5B007972B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AEA4AF7-88E6-4F50-9C7C-BCE5B007972B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +77,7 @@ Global
 		{E1696A31-D60F-43BC-866C-0F350DE5E13F} = {CADB7194-C83E-4C62-8B28-5DDBE9063454}
 		{8BD112B6-8ED2-4704-8FE7-B4B96A357329} = {CADB7194-C83E-4C62-8B28-5DDBE9063454}
 		{1EC718B4-A527-4086-9F0F-CDD639DD1A2C} = {D11018F7-C6A6-4E6C-B730-3D493DBC5A2C}
+		{0AEA4AF7-88E6-4F50-9C7C-BCE5B007972B} = {D11018F7-C6A6-4E6C-B730-3D493DBC5A2C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA3DC0F0-B421-46B7-9AAF-4009F959D59D}

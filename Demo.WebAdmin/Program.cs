@@ -14,7 +14,7 @@ builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
     builder.RegisterModule(new AutofacModule());
 });
 
-RestServiceConfig.BaseUrl = builder.Configuration.GetSection("DemoApiBaseUrl").Value;
+RestServiceConfig.BaseUrl = builder.Configuration.GetSection("DemoServerBaseUrl").Value;
 
 var app = builder.Build();
 
