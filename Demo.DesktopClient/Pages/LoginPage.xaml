@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Demo.DesktopClient.Pages.LoginPage"
              Title="LoginPage">
-    <VerticalStackLayout>
+    <StackLayout>
         <Label Text="Username:"></Label>
         <Entry x:Name="UsernameEditor"></Entry>
         <Label Text="Password"></Label>
         <Entry x:Name="PasswordEditor" IsPassword="True"></Entry>
         <Button Text="Login" x:Name="LoginButton" Clicked="LoginButton_OnClicked"></Button>
         <Button Text="Close" x:Name="CloseButton" Clicked="CloseButton_OnClicked"></Button>
-    </VerticalStackLayout>
+    </StackLayout>
 </ContentPage>
