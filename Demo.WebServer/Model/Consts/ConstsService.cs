@@ -1,4 +1,4 @@
-﻿namespace Demo.WebServer.Model.RolesService
+﻿namespace Demo.WebServer.Model.Consts
 {
     public static class ConstsService
     {

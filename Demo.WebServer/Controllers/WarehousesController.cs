@@ -1,6 +1,6 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.WebServer.Controllers.Warehouses;
-using Demo.WebServer.Model.RolesService;
+using Demo.WebServer.Model.Consts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Demo.WebServer.Model.Roles;

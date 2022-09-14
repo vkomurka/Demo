@@ -1,5 +1,5 @@
-﻿using Demo.WebServer.Model.Entities;
-using Demo.WebServer.Model.TestData;
+﻿using Demo.WebServer.Model.Consts;
+using Demo.WebServer.Model.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

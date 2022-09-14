@@ -1,4 +1,4 @@
-﻿namespace Demo.WebServer.Model.TestData;
+﻿namespace Demo.WebServer.Model.Consts;
 
 public static class TestDataService
 {

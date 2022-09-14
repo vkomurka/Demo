@@ -1,4 +1,5 @@
-﻿using Demo.WebServer.Model.Entities;
+﻿using Demo.WebServer.Model.Configurations;
+using Demo.WebServer.Model.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -52,7 +53,10 @@ public class Context : IdentityDbContext<IdentityUser>
 
         modelBuilder.Entity<Warehouse>().HasKey(t => t.Id).IsClustered(false);
 
-        //modelBuilder.ApplyConfiguration(new RoleConfiguration());
+        modelBuilder.ApplyConfiguration(new IdentityRoleConfiguration());
+        modelBuilder.ApplyConfiguration(new IdentityUserConfiguration());
+        modelBuilder.ApplyConfiguration(new IdentityUserRoleConfiguration());
+
         //modelBuilder.ApplyConfiguration(new UomConfiguration());
         //modelBuilder.ApplyConfiguration(new ProductCategoryConfiguration());
         //modelBuilder.ApplyConfiguration(new ProductConfiguration());

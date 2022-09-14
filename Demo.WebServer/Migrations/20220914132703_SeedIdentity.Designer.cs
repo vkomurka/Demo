@@ -12,19 +12,19 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Demo.WebServer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220906170305_Initialization")]
-    partial class Initialization
+    [Migration("20220914132703_SeedIdentity")]
+    partial class SeedIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.8")
+                .HasAnnotation("ProductVersion", "6.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Demo.WebServer.Entities.Inventory", b =>
+            modelBuilder.Entity("Demo.WebServer.Model.Entities.Inventory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +51,7 @@ namespace Demo.WebServer.Migrations
                     b.ToTable("Inventories");
                 });
 
-            modelBuilder.Entity("Demo.WebServer.Entities.InventoryOperation", b =>
+            modelBuilder.Entity("Demo.WebServer.Model.Entities.InventoryOperation", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,7 +67,7 @@ namespace Demo.WebServer.Migrations
                     b.ToTable("InventoryOperations");
                 });
 
-            modelBuilder.Entity("Demo.WebServer.Entities.InventoryOperationDetail", b =>
+            modelBuilder.Entity("Demo.WebServer.Model.Entities.InventoryOperationDetail", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -104,14 +104,13 @@ namespace Demo.WebServer.Migrations
                     b.ToTable("InventoryOperationDetails");
                 });
 
-            modelBuilder.Entity("Demo.WebServer.Entities.Product", b =>
+            modelBuilder.Entity("Demo.WebServer.Model.Entities.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -132,14 +131,13 @@ namespace Demo.WebServer.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Demo.WebServer.Entities.ProductCategory", b =>
+            modelBuilder.Entity("Demo.WebServer.Model.Entities.ProductCategory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -150,14 +148,13 @@ namespace Demo.WebServer.Migrations
                     b.ToTable("ProductCategories");
                 });
 
-            modelBuilder.Entity("Demo.WebServer.Entities.Uom", b =>
+            modelBuilder.Entity("Demo.WebServer.Model.Entities.Uom", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -168,14 +165,13 @@ namespace Demo.WebServer.Migrations
                     b.ToTable("Uoms");
                 });
 
-            modelBuilder.Entity("Demo.WebServer.Entities.Warehouse", b =>
+            modelBuilder.Entity("Demo.WebServer.Model.Entities.Warehouse", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -210,6 +206,22 @@ namespace Demo.WebServer.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "8A24F1EC-CEA5-45E6-8660-4ABFF9F4EBC8",
+                            ConcurrencyStamp = "1",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "927B07BE-9F8E-400E-A101-81685CF61BCD",
+                            ConcurrencyStamp = "2",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -300,6 +312,22 @@ namespace Demo.WebServer.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "b74ddd14-6340-4840-95c2-db12554843e5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e9eb145e-5bb1-4a4c-97c7-68dc92a982e9",
+                            Email = "",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumber = "",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "dd221621-715c-4352-9adb-88edd082ed40",
+                            TwoFactorEnabled = false,
+                            UserName = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -362,6 +390,13 @@ namespace Demo.WebServer.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "b74ddd14-6340-4840-95c2-db12554843e5",
+                            RoleId = "8A24F1EC-CEA5-45E6-8660-4ABFF9F4EBC8"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -383,56 +418,56 @@ namespace Demo.WebServer.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Demo.WebServer.Entities.Inventory", b =>
+            modelBuilder.Entity("Demo.WebServer.Model.Entities.Inventory", b =>
                 {
-                    b.HasOne("Demo.WebServer.Entities.Product", null)
+                    b.HasOne("Demo.WebServer.Model.Entities.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Demo.WebServer.Entities.Uom", null)
+                    b.HasOne("Demo.WebServer.Model.Entities.Uom", null)
                         .WithMany()
                         .HasForeignKey("UomId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Demo.WebServer.Entities.InventoryOperationDetail", b =>
+            modelBuilder.Entity("Demo.WebServer.Model.Entities.InventoryOperationDetail", b =>
                 {
-                    b.HasOne("Demo.WebServer.Entities.Product", null)
+                    b.HasOne("Demo.WebServer.Model.Entities.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Demo.WebServer.Entities.Warehouse", null)
+                    b.HasOne("Demo.WebServer.Model.Entities.Warehouse", null)
                         .WithMany()
                         .HasForeignKey("SourceWarehouseId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Demo.WebServer.Entities.Warehouse", null)
+                    b.HasOne("Demo.WebServer.Model.Entities.Warehouse", null)
                         .WithMany()
                         .HasForeignKey("TargetWarehouseId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Demo.WebServer.Entities.Uom", null)
+                    b.HasOne("Demo.WebServer.Model.Entities.Uom", null)
                         .WithMany()
                         .HasForeignKey("UomId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Demo.WebServer.Entities.Product", b =>
+            modelBuilder.Entity("Demo.WebServer.Model.Entities.Product", b =>
                 {
-                    b.HasOne("Demo.WebServer.Entities.ProductCategory", null)
+                    b.HasOne("Demo.WebServer.Model.Entities.ProductCategory", null)
                         .WithMany()
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.NoAction);
 
-                    b.HasOne("Demo.WebServer.Entities.Uom", null)
+                    b.HasOne("Demo.WebServer.Model.Entities.Uom", null)
                         .WithMany()
                         .HasForeignKey("UomId")
                         .OnDelete(DeleteBehavior.NoAction)
