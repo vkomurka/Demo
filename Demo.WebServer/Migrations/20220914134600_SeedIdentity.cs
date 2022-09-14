@@ -21,7 +21,7 @@ namespace Demo.WebServer.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5", 0, "e9eb145e-5bb1-4a4c-97c7-68dc92a982e9", "", false, false, null, null, null, null, "", false, "dd221621-715c-4352-9adb-88edd082ed40", false, "Admin" });
+                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5", 0, "776495bb-5f85-4831-9544-0b07c3f7b96d", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN", "AQAAAAEAACcQAAAAEIIsi8YKtoTxPwHw852NNSTXbG6EbpyuEZLk3Kh9rZnhUXjvgNQxDHXxqBVp7mlJEg==", "", false, "478d0714-931b-438c-90be-7ccdc26f6faf", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

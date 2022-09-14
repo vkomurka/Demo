@@ -13,13 +13,15 @@ namespace Demo.WebServer.Model.Configurations
             {
                 Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                 UserName = "Admin",
-                Email = "",
+                NormalizedUserName = "ADMIN",
+                Email = "admin@admin.com",
+                NormalizedEmail = "ADMIN@ADMIN.COM",
                 LockoutEnabled = false,
                 PhoneNumber = ""
             };
 
             var passwordHasher = new PasswordHasher<IdentityUser>();
-            passwordHasher.HashPassword(user, "Admin*123");
+            user.PasswordHash = passwordHasher.HashPassword(user, "Admin*123");
 
             builder.HasData(user);
         }

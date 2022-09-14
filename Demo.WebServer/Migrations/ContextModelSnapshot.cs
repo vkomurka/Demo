@@ -316,13 +316,16 @@ namespace Demo.WebServer.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e9eb145e-5bb1-4a4c-97c7-68dc92a982e9",
-                            Email = "",
+                            ConcurrencyStamp = "776495bb-5f85-4831-9544-0b07c3f7b96d",
+                            Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIIsi8YKtoTxPwHw852NNSTXbG6EbpyuEZLk3Kh9rZnhUXjvgNQxDHXxqBVp7mlJEg==",
                             PhoneNumber = "",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "dd221621-715c-4352-9adb-88edd082ed40",
+                            SecurityStamp = "478d0714-931b-438c-90be-7ccdc26f6faf",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });

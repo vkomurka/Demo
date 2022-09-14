@@ -31,7 +31,7 @@ public class ProductsController : Controller
 
 
     [HttpGet]
-    [Authorize()]
+    [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
     public async Task<ActionResult<List<ProductDto>>> Get()
     {
         if (!ModelState.IsValid)
@@ -43,7 +43,7 @@ public class ProductsController : Controller
 
     [HttpGet]
     [Route("{id}")]
-    [Authorize()]
+    [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
     public async Task<ActionResult<ProductDto>> Get([FromRoute] Guid id)
     {
         if (!ModelState.IsValid)

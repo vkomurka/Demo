@@ -30,7 +30,8 @@ public class ProductCategoriesController : Controller
     public Func<DeleteProductCategoriesAction> DeleteProductCategoriesActionFactory { get; }
 
     [HttpGet]
-    [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
+    [Roles(ConstsService.AdminRole)]
+    [Authorize()]
     public async Task<ActionResult<List<ProductCategoryDto>>> Get()
     {
         return await GetProductCategoriesActionFactory.Invoke().ExecuteAsync(null);
