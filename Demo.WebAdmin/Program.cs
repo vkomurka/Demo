@@ -1,7 +1,9 @@
 using Autofac;
+using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
 using Demo.Contracts;
 using Demo.WebAdmin.Container;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,23 @@ builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
 });
 
 RestServiceConfig.BaseUrl = builder.Configuration.GetSection("DemoServerBaseUrl").Value;
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.Cookie.HttpOnly = true;
+        options.ExpireTimeSpan = TimeSpan.FromSeconds(5);
+        options.LoginPath = new PathString("/Login");
+        options.AccessDeniedPath = new PathString("/AccessDenied");
+        options.SlidingExpiration = true;
+    });
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -31,6 +50,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

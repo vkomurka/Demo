@@ -23,7 +23,7 @@ public class InventoriesController : Controller
 
     [HttpGet]
     [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
-    public async Task<ActionResult<List<InventoryDto>>> Get()
+    public async Task<ActionResult<IEnumerable<InventoryDto>>> Get()
     {
         return await GetInventoriesActionFactory.Invoke().ExecuteAsync(null);
     }

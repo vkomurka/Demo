@@ -1,5 +1,6 @@
 ﻿using Demo.Contracts;
 using Demo.Contracts.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebAdmin.Controllers;
@@ -14,18 +15,21 @@ public class UomsController : Controller
     }
 
     [HttpGet]
+    [Authorize()]
     public async Task<IActionResult> Index()
     {
         return View(await DemoClient.Uoms.GetAsync());
     }
 
     [HttpGet]
+    [Authorize()]
     public IActionResult Create()
     {
         return View();
     }
 
     [HttpPost]
+    [Authorize()]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(UomDto uom)
     {
@@ -40,6 +44,7 @@ public class UomsController : Controller
     }
 
     [HttpGet]
+    [Authorize()]
     public async Task<IActionResult> Edit(Guid? id)
     {
         if ((id == null) || (id == Guid.Empty))
@@ -56,6 +61,7 @@ public class UomsController : Controller
     }
 
     [HttpPost]
+    [Authorize()]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(UomDto uom)
     {
@@ -69,6 +75,7 @@ public class UomsController : Controller
     }
 
     [HttpGet]
+    [Authorize()]
     public async Task<IActionResult> Delete(Guid? id)
     {
         if ((id == null) || (id == Guid.Empty))
@@ -85,6 +92,7 @@ public class UomsController : Controller
     }
 
     [HttpPost]
+    [Authorize()]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(UomDto uom)
     {

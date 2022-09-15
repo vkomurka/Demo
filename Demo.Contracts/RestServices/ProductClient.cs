@@ -13,7 +13,7 @@ namespace Demo.Contracts.RestServices
         {
         }
 
-        private const string C_Products = "products";
+        private const string C_Products = "Products";
 
         public async Task<List<ProductDto>> GetAsync()
         {

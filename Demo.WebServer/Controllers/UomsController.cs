@@ -32,7 +32,7 @@ public class UomsController : Controller
 
     [HttpGet]
     [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
-    public async Task<ActionResult<List<UomDto>>> Get()
+    public async Task<ActionResult<IEnumerable<UomDto>>> Get()
     {
         return await GetUomsActionFactory.Invoke().ExecuteAsync(null);
     }

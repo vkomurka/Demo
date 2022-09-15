@@ -1,4 +1,5 @@
 ﻿using Demo.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebAdmin.Controllers;
@@ -13,12 +14,14 @@ public class InventoriesController : Controller
     }
 
     [HttpGet]
+    [Authorize()]
     public async Task<IActionResult> Index()
     {
         return View(await DemoClient.Inventories.GetAsync());
     }
 
     [HttpGet]
+    [Authorize()]
     public IActionResult Create()
     {
         return View();

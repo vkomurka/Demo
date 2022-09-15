@@ -13,7 +13,7 @@ public class ProductCategoriesClient : RestService
     {
     }
 
-    private const string C_ProductCategories = "productcategories";
+    private const string C_ProductCategories = "ProductCategories";
 
     public async Task<List<ProductCategoryDto>> GetAsync()
     {

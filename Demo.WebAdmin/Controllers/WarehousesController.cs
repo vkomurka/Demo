@@ -1,6 +1,7 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Demo.WebAdmin.Controllers;
 
@@ -14,18 +15,21 @@ public class WarehousesController : Controller
     }
 
     [HttpGet]
+    [Authorize()]
     public async Task<IActionResult> Index()
     {
         return View(await DemoClient.Warehouses.GetAsync());
     }
 
     [HttpGet]
+    [Authorize()]
     public IActionResult Create()
     {
         return View();
     }
 
     [HttpPost]
+    [Authorize()]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(WarehouseDto warehouse)
     {
@@ -40,6 +44,7 @@ public class WarehousesController : Controller
     }
 
     [HttpGet]
+    [Authorize()]
     public async Task<IActionResult> Edit(Guid? id)
     {
         if ((id == null) || (id == Guid.Empty))
@@ -56,6 +61,7 @@ public class WarehousesController : Controller
     }
 
     [HttpPost]
+    [Authorize()]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(WarehouseDto warehouse)
     {
@@ -69,6 +75,7 @@ public class WarehousesController : Controller
     }
 
     [HttpGet]
+    [Authorize()]
     public async Task<IActionResult> Delete(Guid? id)
     {
         if ((id == null) || (id == Guid.Empty))
@@ -85,6 +92,7 @@ public class WarehousesController : Controller
     }
 
     [HttpPost]
+    [Authorize()]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(WarehouseDto warehouse)
     {

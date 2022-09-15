@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace Demo.DesktopClient
+namespace Demo.DesktopClient.Platforms.MacCatalyst
 {
     public class Program
     {

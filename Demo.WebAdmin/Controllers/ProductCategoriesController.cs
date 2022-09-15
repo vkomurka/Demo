@@ -1,6 +1,7 @@
 ﻿using Demo.Contracts.Dtos;
 using Demo.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Demo.WebAdmin.Controllers;
 
@@ -14,6 +15,7 @@ public class ProductCategoriesController : Controller
     }
 
     [HttpGet]
+    [Authorize()]
     public async Task<IActionResult> Index()
     {
         return View(await DemoClient.ProductCategories.GetAsync());
@@ -26,6 +28,7 @@ public class ProductCategoriesController : Controller
     }
 
     [HttpPost]
+    [Authorize()]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(ProductCategoryDto category)
     {
@@ -40,6 +43,7 @@ public class ProductCategoriesController : Controller
     }
 
     [HttpGet]
+    [Authorize()]
     public async Task<IActionResult> Edit(Guid? id)
     {
         if ((id == null) || (id == Guid.Empty))
@@ -56,6 +60,7 @@ public class ProductCategoriesController : Controller
     }
 
     [HttpPost]
+    [Authorize()]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(ProductCategoryDto category)
     {
@@ -69,6 +74,7 @@ public class ProductCategoriesController : Controller
     }
 
     [HttpGet]
+    [Authorize()]
     public async Task<IActionResult> Delete(Guid? id)
     {
         if ((id == null) || (id == Guid.Empty))
@@ -85,6 +91,7 @@ public class ProductCategoriesController : Controller
     }
 
     [HttpPost]
+    [Authorize()]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(ProductCategoryDto category)
     {

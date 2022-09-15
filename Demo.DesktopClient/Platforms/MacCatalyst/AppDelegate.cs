@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace Demo.DesktopClient
+namespace Demo.DesktopClient.Platforms.MacCatalyst
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

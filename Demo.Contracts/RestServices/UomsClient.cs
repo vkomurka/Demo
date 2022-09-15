@@ -13,7 +13,7 @@ public class UomsClient : RestService
     {
     }
 
-    private const string C_Uoms = "uoms";
+    private const string C_Uoms = "Uoms";
 
     public async Task<List<UomDto>> GetAsync()
     {

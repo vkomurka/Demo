@@ -32,7 +32,7 @@ public class ProductsController : Controller
 
     [HttpGet]
     [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
-    public async Task<ActionResult<List<ProductDto>>> Get()
+    public async Task<ActionResult<IEnumerable<ProductDto>>> Get()
     {
         if (!ModelState.IsValid)
         {

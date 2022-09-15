@@ -6,9 +6,9 @@ namespace Demo.WebServer.Controllers;
 
 [Route("Api/[controller]")]
 [ApiController]
-public class AccountController : Controller
+public class SecurityController : Controller
 {
-    public AccountController(
+    public SecurityController(
         Func<LoginAction> loginActionFactory
         )
     {
@@ -19,7 +19,7 @@ public class AccountController : Controller
 
     [HttpPost]
     [Route("Login")]
-    public async Task<ActionResult> Login([FromBody] UserDto userDto)
+    public async Task<ActionResult<LoginResponseDto>> Login([FromBody] LoginDto userDto)
     {
         var response = await LoginActionFactory.Invoke().ExecuteAsync(userDto);
         if (response == null)

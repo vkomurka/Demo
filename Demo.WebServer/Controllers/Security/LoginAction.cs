@@ -19,7 +19,7 @@ public class LoginAction : IAction
     public UserManager<IdentityUser> UserManager { get; }
     public IConfiguration Configuration { get; }
 
-    public async Task<AuthResponseDto> ExecuteAsync(UserDto userDto)
+    public async Task<LoginResponseDto> ExecuteAsync(LoginDto userDto)
     {
         var user = await UserManager.FindByEmailAsync(userDto.Email);
         var isValidUser = await UserManager.CheckPasswordAsync(user, userDto.Password);
@@ -30,7 +30,7 @@ public class LoginAction : IAction
         }
 
         var token = await GenerateToken(user);
-        var response = new AuthResponseDto
+        var response = new LoginResponseDto
         {
             Token = token,
             UserId = user.Id,

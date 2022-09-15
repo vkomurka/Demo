@@ -13,7 +13,7 @@ public class InventoriesClient : RestService
     {
     }
 
-    private const string C_Inventories = "inventories";
+    private const string C_Inventories = "Inventories";
 
     public async Task<List<InventoryDto>> GetAsync()
     {

@@ -13,6 +13,7 @@ public class MapperConfig : Profile
         CreateMap<Product, ProductDto>().ReverseMap();
         CreateMap<Uom, UomDto>().ReverseMap();
         CreateMap<UserDto, IdentityUser>().ReverseMap();
+        CreateMap<LoginDto, IdentityUser>().ReverseMap();
         CreateMap<Warehouse, WarehouseDto>().ReverseMap();
     }
 }

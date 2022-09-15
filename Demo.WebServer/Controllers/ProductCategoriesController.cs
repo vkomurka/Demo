@@ -32,7 +32,7 @@ public class ProductCategoriesController : Controller
     [HttpGet]
     [Roles(ConstsService.AdminRole)]
     [Authorize()]
-    public async Task<ActionResult<List<ProductCategoryDto>>> Get()
+    public async Task<ActionResult<IEnumerable<ProductCategoryDto>>> Get()
     {
         return await GetProductCategoriesActionFactory.Invoke().ExecuteAsync(null);
     }
