@@ -41,13 +41,40 @@ namespace Demo.WebAdmin.Controllers
                     {
                         new Claim(ClaimTypes.Name, "MyUserNameOrID"),
                         new Claim(ClaimTypes.Role, "SomeRoleName"),
-                        new Claim(ClaimTypes.Country, loginResponse.Token),
+                        new Claim("Token", loginResponse.Token),
                     };
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
+                    var authProperties = new AuthenticationProperties
+                    {
+                        //AllowRefresh = <bool>,
+                        // Refreshing the authentication session should be allowed.
+
+                        //ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+                        // The time at which the authentication ticket expires. A 
+                        // value set here overrides the ExpireTimeSpan option of 
+                        // CookieAuthenticationOptions set with AddCookie.
+
+                        //IsPersistent = true,
+                        // Whether the authentication session is persisted across 
+                        // multiple requests. When used with cookies, controls
+                        // whether the cookie's lifetime is absolute (matching the
+                        // lifetime of the authentication ticket) or session-based.
+
+                        //IssuedUtc = <DateTimeOffset>,
+                        // The time at which the authentication ticket was issued.
+
+                        //RedirectUri = <string>
+                        // The full path or absolute URI to be used as an http 
+                        // redirect response value.
+                    };
+
                     await HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,
-                        new ClaimsPrincipal(identity));
+                        new ClaimsPrincipal(identity),
+                        authProperties);
+
+                    return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Test");
             }

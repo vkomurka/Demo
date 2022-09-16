@@ -1,5 +1,6 @@
 ﻿using Demo.Contracts.RestServices;
 using RestSharp;
+using RestSharp.Authenticators;
 
 namespace Demo.Contracts;
 
@@ -32,5 +33,10 @@ public class DemoClient : RestService
         SecurityClient = new SecurityClient(client);
         Uoms = new UomsClient(client);
         Warehouses = new WarehousesClient(client);
+    }
+
+    public void SetJwtAuthenticator(string token)
+    {
+        Client.Authenticator = new JwtAuthenticator(token);
     }
 }

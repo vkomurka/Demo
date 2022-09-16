@@ -6,6 +6,7 @@ public class RestService
 {
     protected RestClient Client { get; set; }
 
+
     public RestService()
     {
         SetClient(new RestClient(RestServiceConfig.BaseUrl));
