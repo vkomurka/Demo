@@ -18,6 +18,11 @@ public class ProductsController : Controller
     [Authorize()]
     public async Task<IActionResult> Index()
     {
+        var token = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "Token");
+        if (token != null)
+        {
+            DemoClient.SetJwtAuthenticator(token.Value);
+        }
         return View(await DemoClient.Products.GetAsync());
     }
 

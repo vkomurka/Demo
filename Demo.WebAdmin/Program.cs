@@ -22,9 +22,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.Cookie.HttpOnly = true;
-        options.ExpireTimeSpan = TimeSpan.FromSeconds(5);
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
         options.LoginPath = new PathString("/Login");
-        options.AccessDeniedPath = new PathString("/AccessDenied");
+        options.AccessDeniedPath = new PathString("/Login");
         options.SlidingExpiration = true;
     });
 

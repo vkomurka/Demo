@@ -34,10 +34,10 @@ public class ProductsController : Controller
     [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
     public async Task<ActionResult<IEnumerable<ProductDto>>> Get()
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
+        //if (!ModelState.IsValid)
+        //{
+        //    return BadRequest(ModelState);
+        //}
         return await GetProductsActionFactory.Invoke().ExecuteAsync(null);
     }
 
@@ -46,10 +46,10 @@ public class ProductsController : Controller
     [Roles(ConstsService.UserRole, ConstsService.AdminRole)]
     public async Task<ActionResult<ProductDto>> Get([FromRoute] Guid id)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
+        //if (!ModelState.IsValid)
+        //{
+        //    return BadRequest(ModelState);
+        //}
         var products = await GetProductsActionFactory.Invoke().ExecuteAsync(id);
         return products.FirstOrDefault();
     }
