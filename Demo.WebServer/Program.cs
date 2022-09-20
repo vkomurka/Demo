@@ -14,9 +14,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+builder.Host.ConfigureContainer<ContainerBuilder>(hostBuilder =>
 {
-    builder.RegisterModule(new AutofacModule());
+    hostBuilder.RegisterModule(new AutofacModule());
 });
 
 builder.Services.AddIdentityCore<IdentityUser>()
